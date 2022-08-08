@@ -1,0 +1,68 @@
+.container{
+  margin:10px 30px;
+  padding:10px 40px;
+}
+
+.banner-img{
+  width:100%;
+}
+.popular-recipes-container{
+  list-style-type: none;
+  padding-left:0;
+  display:flex;
+  flex-wrap:wrap;
+  /* padding:10px 40px; */
+ 
+}
+.recipe-link{
+  text-decoration: none;
+}
+.recipe-title{
+  color:blacK;
+}
+.recipe{
+  margin:10px;
+}
+.recipe-img{
+  min-height:300px;
+  width:380px;
+  border-radius:2rem;
+}
+.nav{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: dodgerblue;
+  padding:15px 10px;
+}
+.logo{
+  text-decoration: none;
+  color:black;
+}
+.nav-link{
+  text-decoration: none;
+  color:white;
+  font-size:18px;
+  padding:10px;
+}
+.recipe-info-container{
+  margin:15px 60px;
+  padding:0px 30px;
+}
+.recipe-wrapper{
+  display:flex;
+  
+  align-items: start;
+}
+.info-btn{
+  padding:8px 15px;
+  border-radius:8px;
+  margin:8px;
+}
+.btn-container{
+  margin:20px 0px 0px 35px;
+}
+.active{
+  background-color: darkgreen;
+  color:white;
+}
