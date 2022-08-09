@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Searchbar from './Searchbar'
 
 export default function Recipes() {
 
@@ -23,9 +24,13 @@ export default function Recipes() {
         }
     }
   return (
+    <>
+
+    <Searchbar/>
     <div className='container'>
+       
         <h2>Popular Recipes</h2>
-        <ul className="popular-recipes-container">
+        <ul className="recipes-container">
             {popularRecipes.map(recipe=>(
                 <Link className="recipe-link"  to={`/recipe/${recipe.id}`} key={recipe.id}>
                 <li className="recipe" >
@@ -38,5 +43,6 @@ export default function Recipes() {
         </ul>
 
         </div>
+    </>
   )
 }

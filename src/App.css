@@ -1,12 +1,57 @@
-.container{
-  margin:10px 30px;
-  padding:10px 40px;
-}
 
-.banner-img{
-  width:100%;
+
+.container{
+  /* margin:10px 30px; */
+  padding:0px 70px;
+  font-family: Roboto;
 }
-.popular-recipes-container{
+.form-container{
+  margin:0px auto;
+  background-color: darkslategray;
+  padding:10px 0px 30px 0px;
+  text-align: center;
+}
+.input-container{
+  background-color: white;
+  width:50%;
+  display:flex;
+  margin:0 auto;
+  padding: 9px 10px;
+  border-radius:1rem;
+
+}
+.search-bar{
+  width:100%;
+  border:none;
+  outline:none;
+}
+.search-title{
+  font-size:32px;
+  color:white;
+}
+.no-results{
+  text-align: center;
+}
+.home-banner{
+  display:flex;
+  align-items:center;
+}
+.banner-img{
+  width:60%;
+  margin-right:20px;
+  min-height:450px;
+  border-radius:12px;
+}
+.explore-btn{
+  background-color: orange;
+  /* color:white; */
+  font-size:18px;
+  padding:10px 35px;
+  border-width:0px;
+  border-radius:8px;
+  cursor:pointer;
+}
+.recipes-container{
   list-style-type: none;
   padding-left:0;
   display:flex;
@@ -19,6 +64,7 @@
 }
 .recipe-title{
   color:blacK;
+  width:380px;
 }
 .recipe{
   margin:10px;
@@ -33,7 +79,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: dodgerblue;
-  padding:15px 10px;
+  padding:5px 10px;
 }
 .logo{
   text-decoration: none;
@@ -65,4 +111,36 @@
 .active{
   background-color: darkgreen;
   color:white;
+}
+.calories-input{
+  padding:11px 10px;
+  width:30%;
+  border-radius:1rem;
+  border-width:0px;
+  outline:none;
+  margin:20px 0px 0px 0px;
+}
+.get-meal-btn{
+  padding:8px 20px;
+  border-width: 0px;
+  border-radius:8px;
+  background-color:green;
+  color:white;
+  font-size:16px;
+  margin:15px 0px;
+}
+.meals-container{
+  list-style-type: none;
+  padding-left: 0;
+  display:flex;
+  flex-wrap:wrap;
+}
+.meal{
+  margin:10px;
+}
+.meal-img{
+  width:550px;
+}
+.meal-url{
+  text-decoration: none;
 }

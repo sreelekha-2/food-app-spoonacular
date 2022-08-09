@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import Navbar from './Navbar'
 import { Link } from 'react-router-dom'
+import Searchbar from './Searchbar'
 
 export default function Vegetarian() {
     
@@ -27,25 +28,23 @@ export default function Vegetarian() {
         }
     }
   return (
-    <div>
-       
-        <div className='container'>
-
-        
-        <h2>Vegetarian Recipes</h2>
-        <ul className="popular-recipes-container">
-            {vegRecipes.map(recipe=>(
-                <Link className="recipe-link"  to={`/recipe/${recipe.id}`} key={recipe.id}>
-                <li className="recipe" >
-                    <h4 className="recipe-title">{recipe.title}</h4>
-                    <img className="recipe-img" src={recipe.image} alt="recipe"/>
-                </li>
-                </Link>
-                
-            ))}
-        </ul>
+    <>
+         <Searchbar/>
+        <div className='container'> 
+            <h2>Vegetarian Recipes</h2>
+            <ul className="recipes-container">
+                {vegRecipes.map(recipe=>(
+                    <Link className="recipe-link"  to={`/recipe/${recipe.id}`} key={recipe.id}>
+                    <li className="recipe" >
+                        <h4 className="recipe-title">{recipe.title}</h4>
+                        <img className="recipe-img" src={recipe.image} alt="recipe"/>
+                    </li>
+                    </Link>
+                    
+                ))}
+            </ul>
       </div>
-        </div>
+    </>
   )
 }
 

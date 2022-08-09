@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import Searchbar from './Searchbar'
 
 export default function RecipeInfo() {
     const {id}=useParams()
@@ -30,7 +31,10 @@ export default function RecipeInfo() {
     
 
   return (
-    <div className="recipe-info-container">
+    <>
+     <Searchbar/>
+     <div className="recipe-info-container">
+       
         <div className="recipe-wrapper">
             <div>
                 <p>{info.title}</p>
@@ -53,5 +57,7 @@ export default function RecipeInfo() {
 
         </div>
     </div>
+    </>
+    
   )
 }
