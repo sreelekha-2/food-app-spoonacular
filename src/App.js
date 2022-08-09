@@ -7,9 +7,7 @@ import Vegetarian from './components/Vegetarian';
 import Navbar from './components/Navbar';
 import Recipes from './components/Recipes';
 import SearchRecipes from './components/SearchRecipes';
-import Searchbar from './components/Searchbar';
-import MealPlanHome from './components/MealPlanner';
-import MealList from './components/MealList';
+
 import MealPlanner from './components/MealPlanner';
 
 function App() {
