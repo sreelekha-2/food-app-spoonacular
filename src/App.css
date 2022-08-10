@@ -8,7 +8,7 @@
 .form-container{
   margin:0px auto;
   background-color: darkslategray;
-  padding:10px 0px 30px 0px;
+  padding:30px 0px 30px 0px;
   text-align: center;
 }
 .input-container{
@@ -28,6 +28,7 @@
 .search-title{
   font-size:32px;
   color:white;
+  margin:0px 0px 20px 0px;
 }
 .no-results{
   text-align: center;
@@ -84,6 +85,8 @@
 .logo{
   text-decoration: none;
   color:black;
+  width:90px;
+  height:80px;
 }
 .nav-link{
   text-decoration: none;
@@ -128,6 +131,7 @@
   color:white;
   font-size:16px;
   margin:15px 0px;
+  cursor: pointer;
 }
 .meals-container{
   list-style-type: none;
@@ -143,4 +147,19 @@
 }
 .meal-url{
   text-decoration: none;
+}
+
+.ingredients-input{
+  width:100%;
+  border:none;
+  outline:none;
+  padding-left:10px;
+}
+.ingredients-recipes-intro{
+  display:flex;
+  align-items: center;
+}
+.ingredient-intro-image{
+  width:55%;
+  margin-right:20px;
 }

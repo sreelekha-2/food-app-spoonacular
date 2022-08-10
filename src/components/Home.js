@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Searchbar from './Searchbar'
 
@@ -12,7 +12,7 @@ export default function Home() {
      <div className='container'>
         
         <div className='home-banner'>
-        < img className="banner-img" src="https://blog.dineout-cdn.co.in/blog/wp-content/uploads/2018/05/Kolkata-Blog-Banner-1030x538.png" alt="banner"/>
+          <img className="banner-img" src="https://blog.dineout-cdn.co.in/blog/wp-content/uploads/2018/05/Kolkata-Blog-Banner-1030x538.png" alt="banner"/>
             
           <div>
               <h2>You have a lot on your plate, let Favoreats help with dinner</h2>

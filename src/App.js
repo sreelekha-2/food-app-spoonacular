@@ -9,6 +9,8 @@ import Recipes from './components/Recipes';
 import SearchRecipes from './components/SearchRecipes';
 
 import MealPlanner from './components/MealPlanner';
+import RecipesByIngredientsHome from './components/RecipesByIngredientsHome';
+import RecipesByIngredients from './components/RecipesByIngredients';
 
 function App() {
   return (
@@ -22,8 +24,10 @@ function App() {
           <Route path="/recipe/:id" element={<RecipeInfo/>}/>
           <Route path="/vegetarian" element={<Vegetarian/>}/>
           <Route path="/recipes/:search" element={<SearchRecipes/>}/>
-          {/* <Route path="/mealplanhome" element={<MealPlanHome/>}/> */}
           <Route path="/mealplanner" element={<MealPlanner/>}/>
+          <Route path="/recipeByIngredients" element={<RecipesByIngredientsHome/>}/>
+          <Route path="/recipeByIngredients/:ingredients" element={<RecipesByIngredients/>}/>
+        
         </Routes>
       </BrowserRouter>
       

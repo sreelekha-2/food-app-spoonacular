@@ -32,7 +32,7 @@ export default function RecipeInfo() {
 
   return (
     <>
-     <Searchbar/>
+    
      <div className="recipe-info-container">
        
         <div className="recipe-wrapper">

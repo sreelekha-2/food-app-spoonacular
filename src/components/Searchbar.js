@@ -21,7 +21,7 @@ export default function Searchbar() {
         <h2 className='search-title'>Search Your Favorite</h2>
         <form onSubmit={getResults}>
             <div className='input-container'>
-                <input placeholder="search your favorite" className='search-bar' type="text" value={searchText} onChange={getSearchText}/>
+                <input placeholder="search your favorite" className='search-bar' type="search" value={searchText} onChange={getSearchText}/>
                 <BiSearch/>
             </div>
 
