@@ -17,17 +17,19 @@ export default function RecipesByIngredients(props) {
    
   return (
     <div className='container'>
-        
-            <ul className="recipes-container">
-                {recipes.map(recipe=>(
-                    <Link className="recipe-link"  to={`/recipe/${recipe.id}`} key={recipe.id}>
-                    <li className="recipe" >
-                        <h4 className="recipe-title">{recipe.title}</h4>
-                        <img className="recipe-img" src={recipe.image} alt="recipe"/>
-                    </li>
-                    </Link>      
-                ))}
-            </ul>
+        {recipes.length===0?<h2 className='no-results'>No Results Found</h2>:(
+              <ul className="recipes-container">
+              {recipes.map(recipe=>(
+                  <Link className="recipe-link"  to={`/recipe/${recipe.id}`} key={recipe.id}>
+                  <li className="recipe" >
+                      <h4 className="recipe-title">{recipe.title}</h4>
+                      <img className="recipe-img" src={recipe.image} alt="recipe"/>
+                  </li>
+                  </Link>      
+              ))}
+          </ul>
+        )}
+          
     </div>
   )
 }

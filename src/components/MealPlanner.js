@@ -26,7 +26,7 @@ export default function MealPlanner() {
   return (
     <>
       
-      <div className='form-container'>
+      <div className='form-container meal-planner-form'>
             <div>
                 <input type="number" className='calories-input' value={calories}  placeholder="Enter calories" onChange={getCalories}/>
                     
