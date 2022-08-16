@@ -13,6 +13,7 @@ export default function Navbar() {
                 <Link className="nav-link" to= "/vegetarian">Veggie</Link>
                 <Link className="nav-link" to="/mealplanner">Mealplan</Link>
                 <Link className='nav-link' to="/recipeByIngredients">Recipes By Ingredients</Link>
+                <Link className='nav-link' to="/wines">Wines</Link>
             </div>
         </nav>
     </div>

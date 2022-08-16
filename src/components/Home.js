@@ -5,11 +5,13 @@ import Searchbar from './Searchbar'
 
 export default function Home() {
     const navigate=useNavigate()
-
+    
   return (
     <>
      <Searchbar/>
      <div className='container'>
+
+      
         
         <div className='home-banner'>
           <img className="banner-img" src="https://blog.dineout-cdn.co.in/blog/wp-content/uploads/2018/05/Kolkata-Blog-Banner-1030x538.png" alt="banner"/>

@@ -26,6 +26,7 @@ export default function Searchbar() {
     const suggestionClick=(title)=>{
       setSearchText(title)
       setSuggestions([])
+     
     }
   
     const getSearchText=(e)=>{
@@ -47,9 +48,7 @@ export default function Searchbar() {
         <form onSubmit={getResults} ref={formRef}>
             <div className='input-container'>
                 <BiSearch/>
-                <input placeholder="search your favorite" className='search-bar' type="search" value={searchText} onChange={getSearchText}/>
-               
-              
+                <input placeholder="search your favorite" className='search-bar' type="text" value={searchText} onChange={getSearchText}/>
             </div>
             {suggestions.length!==0 &&  <ul className='suggestions-container'>
                   {suggestions.map(suggestion=>(

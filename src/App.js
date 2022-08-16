@@ -11,6 +11,7 @@ import SearchRecipes from './components/SearchRecipes';
 import MealPlanner from './components/MealPlanner';
 import RecipesByIngredientsHome from './components/RecipesByIngredientsHome';
 import RecipesByIngredients from './components/RecipesByIngredients';
+import Wines from './components/Wines';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/mealplanner" element={<MealPlanner/>}/>
           <Route path="/recipeByIngredients" element={<RecipesByIngredientsHome/>}/>
           <Route path="/recipeByIngredients/:ingredients" element={<RecipesByIngredients/>}/>
+          <Route path="/wines" element={<Wines/>}/>
         
         </Routes>
       </BrowserRouter>

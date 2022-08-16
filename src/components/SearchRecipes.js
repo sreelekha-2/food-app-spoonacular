@@ -1,11 +1,13 @@
 import React, { useEffect,useState } from 'react'
 import { useParams,Link} from 'react-router-dom'
 import Searchbar from './Searchbar'
+import {Circles} from "react-loader-spinner"
 
 export default function SearchRecipes() {
 
     const {search}=useParams()
     const [searchRecipes,setSearchRecipes]=useState([])
+    const [isLoading,setIsLoading]=useState(true)
 
     useEffect(()=>{
         getSearchResults()
@@ -16,13 +18,15 @@ export default function SearchRecipes() {
         const data=await res.json()
         console.log(data)
         setSearchRecipes(data.results)
+        setIsLoading(false)
     }
   return (
     <>
        <Searchbar/>
        <div className='container'>
-     
-     {searchRecipes.length===0?<h2 className='no-results'>No Results Found</h2>:(
+        {isLoading && <div className='loader'><Circles/></div>}
+        {!isLoading && searchRecipes.length===0 && <div className='no-results'><h2>No Results Found</h2></div>}
+        {!isLoading && (
               <ul className="recipes-container">
          
               {searchRecipes.map(recipe=>(
@@ -35,6 +39,8 @@ export default function SearchRecipes() {
               ))}
           </ul>
              )}
+     
+    
     
  </div>
     </>

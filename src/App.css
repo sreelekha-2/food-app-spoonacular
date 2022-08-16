@@ -5,6 +5,15 @@
   padding:0px 70px;
   font-family: Roboto;
 }
+.loader{
+  display:flex;
+  justify-content: center;
+  text-align: center;
+  margin:15px 0px;
+}
+.no-results{
+  text-align: center;
+}
 .form-container{
   margin:0px auto;
   background-color: darkslategray;
@@ -128,6 +137,7 @@
   padding:8px 15px;
   border-radius:8px;
   margin:8px;
+  cursor: pointer;
 }
 .btn-container{
   margin:20px 0px 0px 35px;
@@ -136,9 +146,7 @@
   background-color: darkgreen;
   color:white;
 }
-.price-details-container{
-  /* padding-left: 0; */
-}
+
 .calories-input{
   padding:11px 10px;
   width:30%;
@@ -172,7 +180,20 @@
 .meal-url{
   text-decoration: none;
 }
-
+.ingredients-container{
+  list-style-type: none;
+  padding-left: 0;
+  display:flex;
+  flex-wrap:wrap;
+}
+.ingredient-img{
+  height:100px;
+}
+.ingredient{
+  width:150px;
+  margin:10px;
+  text-align: center;
+}
 .ingredients-input{
   width:100%;
   border:none;
@@ -183,7 +204,75 @@
   display:flex;
   align-items: center;
 }
+
 .ingredient-intro-image{
   width:55%;
   margin-right:20px;
+}
+.wines-container{
+  margin:25px 0px;
+  text-align: center;
+}
+.wine-dropdown{
+  padding:10px 6px;
+  font-size:16px;
+  width:20%;
+}
+.get-wines-btn{
+  padding:11px 18px;
+  background-color: blue;
+  margin:0px 10px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size:16px;
+}
+.wines-list{
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.wine{
+  /* margin:0px 20px; */
+  /* border:2px solid red; */
+  width:32%;
+  margin:0px 20px 0px 0px;
+  padding:10px 15px;
+  text-align: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0),rgb(0, 0, 0,0.2));
+}
+.wine-image{
+  height:200px;
+}
+.view-more-container{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  color:darkgoldenrod;
+}
+.view-more-btn{
+  text-decoration: none;
+  display:block;
+  margin:10px 8px 10px 0px;
+  color:darkgoldenrod;
+}
+.wine-banner-container{
+  position: relative;
+}
+.wine-banner-text{
+  position: absolute;
+  top:68%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  color:white;
+  font-size:35px;
+  /* max-width:400px; */
+  width:auto;
+  text-align: center;
+}
+.wine-banner-img{
+  width:100%;
+  height:500px;
 }
