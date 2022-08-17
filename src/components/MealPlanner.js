@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import MealData from './MealData'
+import UserConnect from './UserConnect'
 
 export default function MealPlanner() {
     const navigate=useNavigate()
@@ -9,7 +10,7 @@ export default function MealPlanner() {
 
     const getMealPlanner=()=>{
         setCalories("")
-        fetch(`https://api.spoonacular.com/mealplanner/generate?apiKey=daff5ff5d65d429fb51b31004ba520da&timeFrame=day&diet=vegetarian&targetCalories=${calories}`)
+        fetch(`https://api.spoonacular.com/mealplanner/generate?apiKey=${process.env.REACT_APP_API_KEY}&timeFrame=day&diet=vegetarian&targetCalories=${calories}`)
         .then(res=>res.json())
         .then(data=>{
             console.log(data)
@@ -25,8 +26,9 @@ export default function MealPlanner() {
  
   return (
     <>
-      
-      <div className='form-container meal-planner-form'>
+      <UserConnect/>
+      {/* <div className='form-container meal-planner-form'>
+            
             <div>
                 <input type="number" className='calories-input' value={calories}  placeholder="Enter calories" onChange={getCalories}/>
                     
@@ -41,7 +43,14 @@ export default function MealPlanner() {
             {mealData && <MealData mealData={mealData}/>}
             
         </div>
-        
+         */}
+
+        {/* <label>Get Meal Plan</label>
+         <select>
+          <option>per week</option>
+          <option>per day</option>
+         </select>
+         <button>Get Meal Plan</button> */}
     </>
   )
 }
