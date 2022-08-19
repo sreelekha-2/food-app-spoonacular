@@ -276,3 +276,127 @@
   width:100%;
   height:500px;
 }
+
+.meal-planner-container{
+  display:flex;
+}
+.mealplan-sidebar{
+  display:flex;
+  flex-direction: column;
+  align-items: start;
+  background-color: rgb(4, 23, 24);
+  /* padding:20px; */
+  padding:15px 20px;
+  width:20%;
+  height:100vh;
+  margin:0px;
+  list-style-type: none;
+ 
+}
+.mealplan-mainbar{
+  width:80%;
+}
+.meal-link{
+  text-decoration: none;
+
+  color:rgb(255, 255, 255,0.8);
+  cursor:pointer;
+}
+.meal-option{
+  font-size:18px;
+  padding:6px 0px;
+  font-weight:500;
+}
+.profiles-page{
+  padding:20px;
+}
+.profiles{
+  list-style-type: none;
+  padding-left: 0;
+}
+.profile-container{
+  display:flex;
+  margin:30px 0px;
+}
+.profile-link{
+  text-decoration: none;
+  color:black;
+  
+}
+.profile-logo{
+  text-transform: uppercase;
+  background-color: cadetblue;
+  padding:30px;
+  border-radius:50%;
+  margin:10px;
+  font-size:20px;
+  font-weight: bold;
+  
+}
+
+.label{
+  display: block;
+  margin:8px 0px;
+  font-size:17px;
+}
+
+.input-field{
+  width:40%;
+  padding:5px 4px;
+}
+
+.connect-input-field{
+  width:100%;
+  padding:5px 4px;
+}
+.meal-btn{
+  display: block;
+  padding:8px 25px;
+  background-color: blue;
+  color:white;
+  font-size:15px;
+  border-width:0px;
+  margin:15px 0px;
+  width:40%;
+}
+/* .add-meal-form{
+  width:80%;
+} */
+.mealplan-container{
+  padding:20px;
+  display:flex;flex-direction: column;
+  align-items: center;
+  background-color:aliceblue;
+}
+.connect-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 450px;
+}
+.form-group{
+  width:100%;
+}
+.go-to-profile-container{
+  display:flex;
+  align-items: center;
+}
+.go-to-profile{
+  border:none;
+  background-color: transparent;
+  color:rgb(89, 0, 255);
+  cursor:pointer;
+  font-size:16px;
+}
+
+.meals-list{
+  list-style-type: none;
+  padding-left: 0;
+  display:flex;
+  flex-wrap: wrap;
+}
+.meal{
+  width:230px;
+ 
+  padding:10px 15px;
+}
