@@ -5,7 +5,7 @@ export default function AddMeal() {
     const {profile}=useParams()
     const addMealForm=useRef()
     console.log(profile)
-    const [mealPlanData,setMealPlanData]=useState({date:"",type:"",title:"",servings:"",slot:0})
+    const [mealPlanData,setMealPlanData]=useState({date:"",title:"",servings:"",slot:0})
     const [uniqueNo,setUniqueNo]=useState(1)
     const handler=(e)=>{
         const {name,value}=e.target
@@ -77,8 +77,8 @@ export default function AddMeal() {
                 <label className="label">Date</label>
                 <input type="date" className="input-field" name="date" onChange={handler}/>
 
-                <label className="label">Type</label>
-                <input type="text" className="input-field" name="type"  onChange={handler}/>
+                {/* <label className="label">Type</label>
+                <input type="text" className="input-field" name="type"  onChange={handler}/> */}
 
                 <label className="label">Title</label>
                 <input type="text" className="input-field" name="title"  onChange={handler}/>
