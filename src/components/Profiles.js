@@ -6,8 +6,7 @@ export default function Profiles() {
    console.log(users)
   return (
     <div className='profiles-page'>
-        {users.length===0?<h2>No Profiles Found</h2>:(
-              <>
+        {users &&    <>
               <h2>Users Profiles</h2>
               <ul className='profiles'>
                   {users.map(each=>(
@@ -20,8 +19,8 @@ export default function Profiles() {
                       
                   ))}
               </ul>
-              </>
-        )}
+              </>}
+        {!users && <h2>No Profiles Found</h2>}
       
     </div>
   )
