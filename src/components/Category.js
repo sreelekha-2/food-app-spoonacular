@@ -14,7 +14,7 @@ export default function Category() {
                     <h4 className="cuisine-name">American</h4>
                 </Link>
             </li>
-            <li className="cuisine"><Link to="/cuisine/japanese"  className='cuisine-link'><GiChopsticks/><h4 className="cuisine-name">Japanese</h4></Link></li>
+            <li className="cuisine"><Link to="/cuisine/spanish"  className='cuisine-link'><GiChopsticks/><h4 className="cuisine-name">Spanish</h4></Link></li>
             <li className="cuisine"><Link to="/cuisine/chinese" className='cuisine-link'><GiNoodles/><h4 className="cuisine-name">Chinese</h4></Link></li>
             <li className="cuisine"><Link to="/cuisine/french" className='cuisine-link'><FaHamburger/><h4 className="cuisine-name">French</h4></Link></li>
        </ul>
