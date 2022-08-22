@@ -10,17 +10,17 @@ export default function Profiles() {
               <h2>Users Profiles</h2>
               <ul className='profiles'>
                   {users.map(each=>(
-                      <Link to={`${each.user}`} className="profile-link">
+                      <Link to={`login`} className="profile-link">
                           <li className="profile-container">
-                              <p><span className="profile-logo">{each.fname.charAt(0)}{each.lname.charAt(0)}</span></p>
-                              <h3>{each.user}</h3>
+                              <p><span className="profile-logo">{each.firstName.charAt(0)}{each.lastName.charAt(0)}</span></p>
+                              <h3>{each.username}</h3>
                           </li>
                       </Link>
                       
                   ))}
               </ul>
               </>}
-        {!users && <h2>No Profiles Found</h2>}
+        {!users &&<div> <h2>No Profiles Found</h2> <Link to="/mealplanner">Go and Register here</Link></div>}
       
     </div>
   )

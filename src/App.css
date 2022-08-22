@@ -304,7 +304,7 @@
 }
 .meal-option{
   font-size:18px;
-  padding:6px 0px;
+  padding:8px 0px;
   font-weight:500;
 }
 .profiles-page{
@@ -399,4 +399,53 @@
   width:230px;
  
   padding:10px 15px;
+}
+.cuisine-container{
+  display:flex;
+  justify-content: center;
+  list-style-type: none;
+  padding-left:0;
+}
+.cuisine{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width:80px;
+  height:80px;
+  background:darkslategray;
+  border-radius: 50%;
+
+  text-align: center;
+  margin:10px;
+  /* text-decoration: none; */
+}
+.cuisine-link{
+  text-decoration: none;
+  color:beige;
+
+}
+.cuisine-name{
+  margin:0;
+  font-size:11px;
+
+}
+.login-btn{
+  background-color: blue;
+  color:white;
+  padding:6px 15px;
+  border-width:0px;
+  font-size:15px;
+  margin:10px 0px;
+}
+.login-form{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  width:450px;
+}
+.login-form-container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }

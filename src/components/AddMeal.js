@@ -58,6 +58,7 @@ export default function AddMeal() {
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
+      alert("meal succefully added")
    
     });
     }

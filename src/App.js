@@ -18,6 +18,10 @@ import AddMeal from './components/AddMeal';
 import GetMeal from './components/GetMeal';
 import Profiles from './components/Profiles';
 import Profile from './components/Profile';
+import UserLogin from './components/UserLogin';
+import ClearMeal from './components/ClearMeal';
+import GetMealWeek from './components/GetMealWeek';
+import CuisineRecipes from './components/CuisineRecipes';
 
 function App() {
   return (
@@ -28,17 +32,21 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           
-          <Route path="/popular" element={<Recipes/>}/>
+          <Route path="/recipes" element={<Recipes/>}/>
           <Route path="/recipe/:id" element={<RecipeInfo/>}/>
-          <Route path="/vegetarian" element={<Vegetarian/>}/>
+        
           <Route path="/recipes/:search" element={<SearchRecipes/>}/>
+          <Route path="/cuisine/:cuisine" element={<CuisineRecipes/>}/>
           {/* <Route path="/mealplanner" element={<MealPlanner/>}/> */}
           <Route path="/mealplanner" element={<Mealplan/>}/>
            
           <Route path="/mealplanner/profiles" element={<Profiles/>}/>
+          <Route path="/mealplanner/profiles/login" element={<UserLogin/>}/>
           <Route path="/mealplanner/profiles/:profile" element={<Profile/>}>
-          <Route path="addmeal" element={<AddMeal/>}/>
+            <Route path="addmeal" element={<AddMeal/>}/>
             <Route path="getmeal" element={<GetMeal/>}/>
+            <Route path="clearmeal" element={<ClearMeal/>}/>
+            <Route path="getmealweek" element={<GetMealWeek/>}/>
           </Route>
           <Route path="/recipeByIngredients" element={<RecipesByIngredientsHome/>}/>
           <Route path="/recipeByIngredients/:ingredients" element={<RecipesByIngredients/>}/>

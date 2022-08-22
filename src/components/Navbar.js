@@ -9,8 +9,7 @@ export default function Navbar() {
             <div>
                 
                 <Link className="nav-link" to= "/">Home</Link>
-                <Link className="nav-link" to="/popular">Popular</Link>
-                <Link className="nav-link" to= "/vegetarian">Veggie</Link>
+                <Link className="nav-link" to="/recipes">Popular</Link>
                 <Link className="nav-link" to="/mealplanner">Mealplan</Link>
                 <Link className='nav-link' to="/recipeByIngredients">Recipes By Ingredients</Link>
                 <Link className='nav-link' to="/wines">Wines</Link>

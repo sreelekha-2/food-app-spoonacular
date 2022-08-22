@@ -41,6 +41,29 @@ export default function GetMeal() {
 
         .catch(e=>console.log(e))
     }
+
+
+    const deleteMealItem=id=>{
+        
+        const url=`https://api.spoonacular.com/mealplanner/${username}/items/${id}?hash=${hash}&apiKey=${process.env.REACT_APP_API_KEY}`
+        const options={
+            method:"DELETE",
+            headers:{
+                "Content-Type":"application/json"
+            }
+        }
+        let text="do u want to delete";
+        if(window.confirm(text)){
+            fetch(url,options)
+            .then(res=>{
+            console.log(res)
+            if(res.ok){
+                alert("meal deleted successdully")
+            }
+        })
+        }
+        
+    }
   return (
     <div>
         
@@ -57,6 +80,7 @@ export default function GetMeal() {
                     <p>Slot:{meal.slot}</p>
                     <p>servings :{meal.value.servings}</p>
                     <p>Meal Item :{meal.value.title}</p>
+                    <button onClick={()=>deleteMealItem(meal.id)}>Delete</button>
                 </li>
             ))}
         </ul>}

@@ -17,21 +17,21 @@ export default function UserConnect() {
         
         
         if(localStorage.getItem("usernames")==undefined){
-            users.push({user:userDetails.username,fname:userDetails.firstName,lname:userDetails.lastName})
+            users.push({...userDetails})
             localStorage.setItem("usernames",JSON.stringify(users))
             connectUser()
         }
         else{
             
             const users=JSON.parse(localStorage.getItem("usernames"))
-            const result=users.some(each=>each.user===userDetails.username)
+            const result=users.some(each=>each.username===userDetails.username)
             console.log(result)
             if(result){
                 alert("user already added")
                 formRef.current.reset()
             }
             else{
-                users.push({user:userDetails.username,fname:userDetails.firstName,lname:userDetails.lastName})
+                users.push({...userDetails})
                 console.log(users)
                 localStorage.setItem("usernames",JSON.stringify(users))
                 connectUser()
@@ -55,15 +55,19 @@ export default function UserConnect() {
         }
         const res=await fetch(url,options)
         const data=await res.json()
+        if(res.ok){
+            alert("user successfully registered")
+            navigate("profiles")
+        }
       
         console.log(data)
         if(localStorage.getItem("usersDetails")==undefined){
-            usersDetails.push({...data,user:userDetails.username})
+            usersDetails.push({...data,user:userDetails.username,mail:userDetails.email})
             localStorage.setItem("usersDetails",JSON.stringify(usersDetails))
         }
         else{
             const usersDetails=JSON.parse(localStorage.getItem("usersDetails"))
-            usersDetails.push({...data,user:userDetails.username})
+            usersDetails.push({...data,user:userDetails.username,mail:userDetails.email})
             localStorage.setItem("usersDetails",JSON.stringify(usersDetails))
         }
 
