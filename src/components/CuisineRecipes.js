@@ -8,7 +8,7 @@ export default function CuisineRecipes() {
     const [cuisines,setCuisines]=useState([])
     useEffect(()=>{
         getCuisineRecipes()
-    },[])
+    },[cuisine])
 
     const getCuisineRecipes=async()=>{
         const url=`https://api.spoonacular.com/recipes/complexSearch?cuisine=${cuisine}&apiKey=${process.env.REACT_APP_API_KEY}`
