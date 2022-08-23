@@ -7,6 +7,7 @@ export default function UserConnect() {
     const formRef=useRef()
     const users=[]
     const usersDetails=[]
+
     const handler=(e)=>{
         const {name,value}=e.target
         setUserDetails({...userDetails,[name]:value})
@@ -32,15 +33,11 @@ export default function UserConnect() {
             }
             else{
                 users.push({...userDetails})
-                console.log(users)
                 localStorage.setItem("usernames",JSON.stringify(users))
                 connectUser()
             }
           
-        }
-        
-      
-       
+        }  
 
     }
 
@@ -60,7 +57,6 @@ export default function UserConnect() {
             navigate("profiles")
         }
       
-        console.log(data)
         if(localStorage.getItem("usersDetails")==undefined){
             usersDetails.push({...data,user:userDetails.username,mail:userDetails.email})
             localStorage.setItem("usersDetails",JSON.stringify(usersDetails))
@@ -75,6 +71,7 @@ export default function UserConnect() {
        
    
     }
+
   return (
     <div className="mealplan-container">
         <h2>Welcome to meal planner </h2>
@@ -82,30 +79,30 @@ export default function UserConnect() {
         <form ref={formRef} onSubmit={submitDetails} className="connect-form">
             <div className="form-group">
                 <label className="label">Username</label>
-                <input type="text" name="username" className="connect-input-field" onChange={handler}/>
+                <input type="text" name="username" className="connect-input-field" onChange={handler} required/>
             </div>
             
             <div className="form-group">
                 <label className="label">Firstname</label>
-                <input type="text" name="firstName" className="connect-input-field" onChange={handler}/>
+                <input type="text" name="firstName" className="connect-input-field" onChange={handler} required/>
             </div>
 
             <div className="form-group">
                 <label className="label">Lastname</label>
-                <input type="text" name="lastName" className="connect-input-field" onChange={handler}/>
+                <input type="text" name="lastName" className="connect-input-field" onChange={handler} required/>
             </div>
 
             <div className="form-group">
                 <label className="label">Email</label>
-                <input type="email" name="email" className="connect-input-field" onChange={handler}/>
+                <input type="email" name="email" className="connect-input-field" onChange={handler} required/>
             </div>
             
-       
             <input type="submit" value="Connect" className="meal-btn"/>
         </form>
+        
         <div className='go-to-profile-container'>
             <p>Do you have profile?</p>
-            <button onClick={()=>navigate("profiles")} className="go-to-profile">go to profile</button>
+            <button onClick={()=>navigate("/mealplanner/profiles")} className="go-to-profile">go to profile</button>
         </div>
     </div>
   )

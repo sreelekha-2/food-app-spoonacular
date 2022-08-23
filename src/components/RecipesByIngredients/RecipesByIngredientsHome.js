@@ -1,9 +1,7 @@
 import React from "react";
-import SearchbarIngredients from "./SearchbarIngredients";
+import SearchbarIngredients from "../Searchbar/SearchbarIngredients";
 
 export default function RecipesByIngredientsHome() {
-  
-
     
   return (
     <div>
@@ -17,11 +15,6 @@ export default function RecipesByIngredientsHome() {
                 
                 </div>
               </div>
-
-           
-     
-
-        
         </div>
 
     </div>

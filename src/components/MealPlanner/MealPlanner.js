@@ -1,10 +1,10 @@
-import React,{useState,useEffect} from 'react'
-import { useNavigate } from 'react-router-dom'
+import React,{useState} from 'react'
+
 import MealData from './MealData'
-import UserConnect from './UserConnect'
+
 
 export default function MealPlanner() {
-    const navigate=useNavigate()
+    
     const [calories,setCalories]=useState("")
     const [mealData,setMealData]=useState(null)
 
@@ -26,14 +26,17 @@ export default function MealPlanner() {
  
   return (
     <>
-      <UserConnect/>
-      {/* <div className='form-container meal-planner-form'>
+      
+      <div className='form-container meal-planner-form'>
             
             <div>
                 <input type="number" className='calories-input' value={calories}  placeholder="Enter calories" onChange={getCalories}/>
                     
             </div>
             <button onClick={()=>getMealPlanner()} className="get-meal-btn">Get Meal Plan</button>
+  
+           
+            
         </div>
         <div className="container text-container">
             <h1>Get Your Meal Plan</h1>
@@ -43,8 +46,8 @@ export default function MealPlanner() {
             {mealData && <MealData mealData={mealData}/>}
             
         </div>
-         */}
-
+        
+        {/* <UserConnect/> */}
         {/* <label>Get Meal Plan</label>
          <select>
           <option>per week</option>

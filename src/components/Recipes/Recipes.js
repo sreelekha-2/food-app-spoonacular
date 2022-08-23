@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import Category from './Category'
-import Searchbar from './Searchbar'
+import Category from '../CuisineRecipes/Category'
+import Searchbar from '../Searchbar/Searchbar'
 
 
 export default function Recipes() {

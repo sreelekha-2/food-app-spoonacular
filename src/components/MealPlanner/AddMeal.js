@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom'
 export default function AddMeal() {
     const {profile}=useParams()
     const addMealForm=useRef()
-    console.log(profile)
-    const [mealPlanData,setMealPlanData]=useState({date:"",title:"",servings:"",slot:0})
+    const [mealPlanData,setMealPlanData]=useState({date:"",title:"",servings:"",slot:1,url:""})
     const [uniqueNo,setUniqueNo]=useState(1)
+
     const handler=(e)=>{
         const {name,value}=e.target
         setMealPlanData({...mealPlanData,[name]:value})
@@ -15,12 +15,9 @@ export default function AddMeal() {
     
    const usersDetails=JSON.parse(localStorage.getItem("usersDetails"))
    const filterResults=usersDetails.filter(each=>each.user===profile)
-
-
-    console.log(filterResults)
    
     const addToMealPlan=()=>{
-        console.log(mealPlanData)
+       
         setUniqueNo(uniqueNo+1)
         const postMealData=
         {
@@ -32,17 +29,13 @@ export default function AddMeal() {
                 id: uniqueNo,
                 servings: mealPlanData.servings,
                 title:mealPlanData.title,
-                imageType: "jpg",
+                imageType: mealPlanData.url,
             }
         }
        
-        console.log(postMealData)
-       
         const {username,hash}=filterResults[0]
-        console.log(username,hash)  
        
-       
-         const url=`https://api.spoonacular.com/mealplanner/${username}/items?apiKey=${process.env.REACT_APP_API_KEY}&hash=${hash}`
+        const url=`https://api.spoonacular.com/mealplanner/${username}/items?apiKey=${process.env.REACT_APP_API_KEY}&hash=${hash}`
         const options={
             method:"POST",
             body:JSON.stringify(postMealData),
@@ -55,12 +48,16 @@ export default function AddMeal() {
 
        
         fetch(url, options)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      alert("meal succefully added")
+       .then((res) => res.json())
+       .then((data) => {
+         console.log(data);
+        alert("meal succefully added")
    
-    });
+        })
+    .catch(err=>{
+        console.log(err)
+        alert("meal not added")
+    })
     }
 
     const addMealPlanData=(e)=>{
@@ -75,20 +72,29 @@ export default function AddMeal() {
         
            
             <form className="add-meal-form" ref={addMealForm} onSubmit={addMealPlanData}>
-                <label className="label">Date</label>
-                <input type="date" className="input-field" name="date" onChange={handler}/>
 
-                {/* <label className="label">Type</label>
-                <input type="text" className="input-field" name="type"  onChange={handler}/> */}
+                <label className="label">Date</label>
+                <input type="date" className="input-field" name="date" onChange={handler} required/>
+
 
                 <label className="label">Title</label>
-                <input type="text" className="input-field" name="title"  onChange={handler}/>
+                <input type="text" className="input-field" name="title"  onChange={handler} required/>
+
+                <label className="label" htmlFor="url">Enter an https:// Image URL:</label>
+
+                <input type="text" name="url" id="url"
+                    placeholder="https://example.com"
+                    pattern="https://.*" size="30"
+                    className="input-field"
+                    onChange={handler}
+                    required
+                    />
 
                 <label className="label">Servings</label>
-                <input type="number" className="input-field" name="servings" onChange={handler}/>
+                <input type="number" className="input-field" name="servings" onChange={handler} required/>
 
                 <label className="label">Slot</label>
-                <select className="input-field" name="slot" onChange={handler}>
+                <select className="input-field" name="slot" onChange={handler} required>
                     <option value="1">Break Fast</option>
                     <option value="2">Lunch</option>
                     <option value="3">Dinner</option>

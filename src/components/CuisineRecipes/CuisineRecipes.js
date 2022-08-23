@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Category from './Category'
-import Searchbar from './Searchbar'
+import Searchbar from '../Searchbar/Searchbar'
 
 export default function CuisineRecipes() {
     const {cuisine}=useParams()
@@ -14,7 +14,6 @@ export default function CuisineRecipes() {
         const url=`https://api.spoonacular.com/recipes/complexSearch?cuisine=${cuisine}&apiKey=${process.env.REACT_APP_API_KEY}`
        const res=await fetch(url)
        const data=await res.json()
-       console.log(data)
        setCuisines(data.results)
     }
   return (

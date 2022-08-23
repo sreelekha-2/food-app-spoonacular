@@ -12,7 +12,6 @@ export default function SearchbarIngredients() {
 
     const getRecipes=(e)=>{
         e.preventDefault()
-        console.log(ingredients)
         const ingredientsText=ingredients.split(",").join("+")
         navigate(`/recipeByIngredients/${ingredientsText}`)
         

@@ -12,17 +12,20 @@ export default function GetMeal() {
     const filterResults=usersDetails.filter(each=>each.user===profile)
 
     const {username,hash}=filterResults[0]
-    console.log(username,hash)
-    
+  
     const handler=(e)=>{
-        console.log(e.target.value)
+        
         setDate(e.target.value)
     }
    
-    const getMealPlanForUser=(e)=>{
+    const submitGetMealForm=(e)=>{
         e.preventDefault()
+        getMealPlanForUser()
+    }
+    const getMealPlanForUser=()=>{
+      
         const url=`https://api.spoonacular.com/mealplanner/${username}/day/${date}?hash=${hash}&apiKey=${process.env.REACT_APP_API_KEY}`
-        // const url= `https://api.spoonacular.com/mealplanner/sree12/day/2022-08-18?hash=e3ba695e70e54fd130594d63d86f6e7387cb3528&apiKey=${process.env.REACT_APP_API_KEY}`
+      
         const options={
             method:"GET",
             mode:"cors",
@@ -58,7 +61,8 @@ export default function GetMeal() {
             .then(res=>{
             console.log(res)
             if(res.ok){
-                alert("meal deleted successdully")
+                alert("meal deleted successfully")
+                getMealPlanForUser()
             }
         })
         }
@@ -67,23 +71,27 @@ export default function GetMeal() {
   return (
     <div>
         
-        <form onSubmit={getMealPlanForUser}>
+        <form onSubmit={submitGetMealForm}>
             <label className="label">Date</label>
-            <input className='input-field' type="date" name="date" onChange={handler}/>
+            <input className='input-field' type="date" name="date" onChange={handler} required/>
             <input type="submit" value="Get Your Meal Plan" className='meal-btn'/>
         </form>
        
-        {meals && <ul className="meals-list">
-            {meals.map(meal=>(
-                <li className='meal'>
-                    <p>Day:{day}</p>
-                    <p>Slot:{meal.slot}</p>
-                    <p>servings :{meal.value.servings}</p>
-                    <p>Meal Item :{meal.value.title}</p>
-                    <button onClick={()=>deleteMealItem(meal.id)}>Delete</button>
-                </li>
-            ))}
-        </ul>}
+        {meals && 
+        <ul className='get-meal-week-container'>
+                          {meals.map(meal=>(
+                              <li className='get-meal-week-item'>
+                                  <h3 className='meal-day'>{day}</h3>
+                                  <img src={meal.value.imageType} alt={meal.value.title} className="meal-image" />
+                                  <h4 className="meal-slot">{meal.slot===1?"Break Fast":meal.slot===2?"Lunch":"Dinner"}</h4>
+                        
+                                  <p className="meal-title">{meal.value.title}</p>
+                                  <button className='meal-delete-btn' onClick={()=>deleteMealItem(meal.id)}>Delete</button>
+                              </li>
+                          ))}
+                      </ul>
+           
+        }
         {!meals && <h2>No meals planned for this day</h2>}
         
     </div>

@@ -433,19 +433,108 @@
 .login-btn{
   background-color: blue;
   color:white;
-  padding:6px 15px;
+  padding:8px 20px;
   border-width:0px;
-  font-size:15px;
+  font-size:16px;
   margin:10px 0px;
+  cursor:pointer;
 }
 .login-form{
-  display:flex;
+  /* display:flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; */
   width:450px;
 }
 .login-form-container{
   display:flex;
   flex-direction: column;
   align-items: center;
+}
+.get-meal-week-container{
+  display:flex;
+  flex-wrap:wrap;
+  list-style-type: none;
+  padding-left: 0;
+}
+.get-meal-week-item{
+  margin:5px 25px 10px 0px;
+  width:200px;
+  text-align: center;
+  
+  /* width:240px; */
+
+}
+.meal-day{
+  background:rgb(86, 168, 201);
+  color:white;
+  text-transform: uppercase;
+  padding:8px 14px;
+  font-weight: 500;
+  text-align: center;
+  margin:0;
+}
+.meal-image{
+  width:100%;
+  height:150px;
+}
+.meal-slot{
+  margin:14px;
+}
+.meal-title{
+  font-size:15px;
+  margin:15px 0px;
+}
+.meal-delete-btn{
+  cursor: pointer;
+  padding:6px 20px;
+  background-color: maroon;
+  color:white;
+  font-size: 16px;
+  border-width: 0px;
+  width:100%;
+  margin:18px 0px;
+}
+.no-profiles-container{
+ text-align: center;
+
+}
+.no-profile-link{
+  text-decoration: none;
+  color:cornflowerblue;
+}
+.connect-spoonacular-container{
+  display:flex;
+  color:white;
+  justify-content: center;
+}
+.connect-spoonacular-link{
+  text-decoration: none;
+  background-color: transparent;
+  border-width: 0px;
+  color:green;
+  font-size:15px;
+}
+.dropdown{
+  display:inline-block;
+
+
+}
+.dropdown-content{
+  display:none;
+  position: absolute;
+  /* top:30px; */
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1
+}
+.dropdown-link{
+  display:block;
+  color: black;
+}
+.dropdown-link:hover{
+  background-color: #ddd;
+}
+.dropdown:hover .dropdown-content{
+  display:block;
 }

@@ -2,26 +2,26 @@
 import './App.css';
 import {BrowserRouter,Routes,Route} from "react-router-dom"
 import Home from './components/Home';
-import RecipeInfo from './components/RecipeInfo';
-import Vegetarian from './components/Vegetarian';
-import Navbar from './components/Navbar';
-import Recipes from './components/Recipes';
-import SearchRecipes from './components/SearchRecipes';
+import RecipeInfo from './components/Recipes/RecipeInfo';
+import Navbar from './components/Navbar/Navbar';
+import Recipes from './components/Recipes/Recipes';
+import SearchRecipes from './components/Searchbar/SearchRecipes';
 
-import MealPlanner from './components/MealPlanner';
-import RecipesByIngredientsHome from './components/RecipesByIngredientsHome';
-import RecipesByIngredients from './components/RecipesByIngredients';
-import Wines from './components/Wines';
-import Getmealplan from './components/Mealplan';
-import Mealplan from './components/Mealplan';
-import AddMeal from './components/AddMeal';
-import GetMeal from './components/GetMeal';
-import Profiles from './components/Profiles';
-import Profile from './components/Profile';
-import UserLogin from './components/UserLogin';
-import ClearMeal from './components/ClearMeal';
-import GetMealWeek from './components/GetMealWeek';
-import CuisineRecipes from './components/CuisineRecipes';
+import MealPlanner from './components/MealPlanner/MealPlanner';
+import RecipesByIngredientsHome from './components/RecipesByIngredients/RecipesByIngredientsHome';
+import RecipesByIngredients from './components/RecipesByIngredients/RecipesByIngredients';
+import Wines from './components/Recipes/Wines';
+
+import Mealplan from './components/MealPlanner/Mealplan';
+import AddMeal from './components/MealPlanner/AddMeal';
+import GetMeal from './components/MealPlanner/GetMeal';
+import Profiles from './components/Profile/Profiles';
+import Profile from './components/Profile/Profile';
+import UserLogin from './components/Profile/UserLogin';
+import ClearMeal from './components/MealPlanner/ClearMeal';
+import GetMealWeek from './components/MealPlanner/GetMealWeek';
+import CuisineRecipes from './components/CuisineRecipes/CuisineRecipes';
+import UserConnect from './components/Profile/UserConnect';
 
 function App() {
   return (
@@ -36,9 +36,10 @@ function App() {
           <Route path="/recipe/:id" element={<RecipeInfo/>}/>
         
           <Route path="/recipes/:search" element={<SearchRecipes/>}/>
-          <Route path="/cuisine/:cuisine" element={<CuisineRecipes/>}/>
-          {/* <Route path="/mealplanner" element={<MealPlanner/>}/> */}
-          <Route path="/mealplanner" element={<Mealplan/>}/>
+          <Route path="/cuisines/:cuisine" element={<CuisineRecipes/>}/>
+          <Route path="/mealplanner" element={<MealPlanner/>}/>
+          <Route path="/userconnect" element={<UserConnect/>}/>
+          {/* <Route path="/mealplanner" element={<Mealplan/>}/> */}
            
           <Route path="/mealplanner/profiles" element={<Profiles/>}/>
           <Route path="/mealplanner/profiles/login" element={<UserLogin/>}/>

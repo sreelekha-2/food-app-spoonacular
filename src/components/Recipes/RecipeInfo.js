@@ -13,10 +13,9 @@ export default function RecipeInfo() {
     const [isLoading,setIsLoading]=useState(true)
 
    
-    console.log(id)
+
     useEffect(()=>{
         recipeInfo()
-        
         getPriceDetails()
         getTasteDetails()
     },[])

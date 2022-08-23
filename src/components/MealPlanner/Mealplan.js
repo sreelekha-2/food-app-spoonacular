@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from "axios"
 import {Link, Outlet } from 'react-router-dom'
-import UserConnect from './UserConnect'
+import UserConnect from '../Profile/UserConnect'
 
 export default function Mealplan() {
     const [mealPlanData,setMealPlanData]=useState({date:"",type:"",title:""})

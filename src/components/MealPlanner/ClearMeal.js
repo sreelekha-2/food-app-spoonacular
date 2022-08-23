@@ -9,7 +9,7 @@ export default function ClearMeal() {
     const filterResults=usersDetails.filter(each=>each.user===profile)
 
     const {username,hash}=filterResults[0]
-    console.log(username,hash)
+    
     
     const clearMealPlan=(e)=>{
         e.preventDefault()
@@ -40,7 +40,7 @@ export default function ClearMeal() {
     <div>
          <form onSubmit={clearMealPlan}>
             <label className="label">Date</label>
-            <input className='input-field' type="date" name="date" onChange={handler}/>
+            <input className='input-field' type="date" name="date" onChange={handler} required/>
             <input type="submit" value="Clear Meal Plan" className='meal-btn'/>
         </form>
     </div>

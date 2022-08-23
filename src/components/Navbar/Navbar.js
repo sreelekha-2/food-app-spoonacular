@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {IoMdArrowDropdown} from "react-icons/io"
 
 export default function Navbar() {
   return (
@@ -10,7 +11,18 @@ export default function Navbar() {
                 
                 <Link className="nav-link" to= "/">Home</Link>
                 <Link className="nav-link" to="/recipes">Popular</Link>
-                <Link className="nav-link" to="/mealplanner">Mealplan</Link>
+               <div className='dropdown'>
+                  <Link className="nav-link" to="">Meal Plan
+                  <IoMdArrowDropdown/>
+                  </Link>
+                 
+                  <div className='dropdown-content'>
+                    <Link className="nav-link dropdown-link" to="/mealplanner">Generate Mealplan</Link>
+                    <Link className="nav-link dropdown-link" to="/userconnect">Create Mealplan</Link>
+                </div>
+               </div>
+               
+                
                 <Link className='nav-link' to="/recipeByIngredients">Recipes By Ingredients</Link>
                 <Link className='nav-link' to="/wines">Wines</Link>
                 <Link className='nav-link' to="/mealplanner/profiles">Profiles</Link>

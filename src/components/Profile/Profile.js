@@ -4,6 +4,7 @@ import { Outlet, useParams,Link } from 'react-router-dom'
 export default function Profile() {
 
     const {profile}=useParams()
+    
   return (
     <>
 

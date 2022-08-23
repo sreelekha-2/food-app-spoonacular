@@ -1,19 +1,17 @@
 import React, {useState, useEffect } from 'react'
 import { Link, useParams,useNavigate } from 'react-router-dom'
 import {Circles} from "react-loader-spinner"
-import { BiSearch } from 'react-icons/bi'
-import SearchbarIngredients from './SearchbarIngredients'
+
+import SearchbarIngredients from '../Searchbar/SearchbarIngredients'
 
 export default function RecipesByIngredients(props) {
     const {ingredients}=useParams()
     const [recipes,setRecipes]=useState([])
     const [isLoading,setIsLoading]=useState(true)
     const ingredientsText=ingredients.split("+").join(",")
-    const [ingredientsRes,setIngredients]=useState("")
-    const navigate=useNavigate()
-    const getSearchText=(e)=>{
-        setIngredients(e.target.value)
-    }
+   
+  
+   
     useEffect(()=>{
         fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.REACT_APP_API_KEY}&ingredients=${ingredientsText}`)
         .then(res=>res.json())
@@ -26,14 +24,7 @@ export default function RecipesByIngredients(props) {
     },[ingredientsText])
 
     
-    const getRecipes=(e)=>{
-        e.preventDefault()
-        console.log(ingredientsRes)
-        const ingredientsText=ingredientsRes.split(",").join("+")
-        navigate(`/recipeByIngredients/${ingredientsText}`)
-        
-        
-    }
+   
    
   return (
     <div>
@@ -55,9 +46,7 @@ export default function RecipesByIngredients(props) {
           </ul>
           </div>
           </div>}
-        {/* {recipes.length===0?<h2 className='no-results'>No Results Found</h2>:(
-             
-        )} */}
+        
           
     </div>
   )
