@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Profiles() {
-    
+
    const users=JSON.parse(localStorage.getItem("usernames"))
 
   return (
@@ -21,7 +21,7 @@ export default function Profiles() {
                   ))}
               </ul>
               </>}
-        {!users && <div className="no-profiles-container"> <h2>No Profiles Found</h2> <Link to="/mealplanner" className='no-profile-link'>Go and Register here</Link></div>}
+        {!users && <div className="no-profiles-container"> <h2>No Profiles Found</h2> <Link to="/userconnect" className='no-profile-link'>Go and Register here</Link></div>}
       
     </div>
   )
