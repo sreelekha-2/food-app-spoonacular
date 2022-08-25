@@ -12,7 +12,6 @@ import RecipesByIngredientsHome from './components/RecipesByIngredients/RecipesB
 import RecipesByIngredients from './components/RecipesByIngredients/RecipesByIngredients';
 import Wines from './components/Recipes/Wines';
 
-import Mealplan from './components/MealPlanner/Mealplan';
 import AddMeal from './components/MealPlanner/AddMeal';
 import GetMeal from './components/MealPlanner/GetMeal';
 import Profiles from './components/Profile/Profiles';
@@ -39,7 +38,7 @@ function App() {
           <Route path="/cuisines/:cuisine" element={<CuisineRecipes/>}/>
           <Route path="/mealplanner" element={<MealPlanner/>}/>
           <Route path="/userconnect" element={<UserConnect/>}/>
-          {/* <Route path="/mealplanner" element={<Mealplan/>}/> */}
+          
            
           <Route path="/mealplanner/profiles" element={<Profiles/>}/>
           <Route path="/mealplanner/profiles/login" element={<UserLogin/>}/>

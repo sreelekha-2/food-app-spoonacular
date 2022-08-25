@@ -90,7 +90,7 @@ export default function Wines() {
                          <BsArrowRight/>
                      </div>
                      
-                     {/* <p>{wine.description}</p> */}
+                     
                  </li>
              ))}
          </ul>

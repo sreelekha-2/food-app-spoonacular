@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react'
-import { Link, useParams,useNavigate } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import {Circles} from "react-loader-spinner"
 
 import SearchbarIngredients from '../Searchbar/SearchbarIngredients'

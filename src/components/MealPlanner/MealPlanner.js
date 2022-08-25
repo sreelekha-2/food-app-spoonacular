@@ -47,13 +47,7 @@ export default function MealPlanner() {
             
         </div>
         
-        {/* <UserConnect/> */}
-        {/* <label>Get Meal Plan</label>
-         <select>
-          <option>per week</option>
-          <option>per day</option>
-         </select>
-         <button>Get Meal Plan</button> */}
+      
     </>
   )
 }
