@@ -13,8 +13,13 @@ export default function AddMeal() {
     }
 
     
-   const usersDetails=JSON.parse(localStorage.getItem("usersDetails"))
-   const filterResults=usersDetails.filter(each=>each.user===profile)
+//    const usersDetails=JSON.parse(localStorage.getItem("usersDetails"))
+//    const filterResults=usersDetails.filter(each=>each.user===profile)
+
+     
+const usernameHash=JSON.parse(localStorage.getItem("usernameHash"))
+  
+const {username,hash}=usernameHash
    
     const addToMealPlan=()=>{
        
@@ -33,7 +38,7 @@ export default function AddMeal() {
             }
         }
        
-        const {username,hash}=filterResults[0]
+        
        
         const url=`https://api.spoonacular.com/mealplanner/${username}/items?apiKey=${process.env.REACT_APP_API_KEY}&hash=${hash}`
         const options={

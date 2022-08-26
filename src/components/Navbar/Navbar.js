@@ -11,7 +11,7 @@ export default function Navbar() {
                 
                 <Link className="nav-link" to= "/">Home</Link>
                 <Link className="nav-link" to="/recipes">Popular</Link>
-               <div className='dropdown'>
+               {/* <div className='dropdown'>
                   <Link className="nav-link" to="">Meal Plan
                   <IoMdArrowDropdown/>
                   </Link>
@@ -20,12 +20,12 @@ export default function Navbar() {
                     <Link className="nav-link dropdown-link" to="/mealplanner">Generate Mealplan</Link>
                     <Link className="nav-link dropdown-link" to="/userconnect">Create Mealplan</Link>
                 </div>
-               </div>
+               </div> */}
                
-                
+               <Link className="nav-link" to="/userconnect">Meal Plan</Link>
                 <Link className='nav-link' to="/recipeByIngredients">Recipes By Ingredients</Link>
                 <Link className='nav-link' to="/wines">Wines</Link>
-                <Link className='nav-link' to="/mealplanner/profiles">Profiles</Link>
+                {/* <Link className='nav-link' to="/mealplanner/profiles">Profiles</Link> */}
             </div>
         </nav>
     </div>

@@ -37,7 +37,7 @@ export default function UserConnect() {
         if(res.ok){
             alert("user successfully registered")
             addUserData({...data,user:userDetails.username,password:userDetails.password})
-            // navigate("/mealplanner/profiles")
+            navigate("/mealplanner/login")
         }
       
         formRef.current.reset()
@@ -49,6 +49,7 @@ export default function UserConnect() {
         createUserWithEmailAndPassword(auth, userDetails.email, userDetails.password)
         .then((response) => {
           console.log(response.user);
+     
           updateProfile(auth.currentUser, {
             displayName: userDetails.username,
           }).then(() => {
@@ -57,8 +58,8 @@ export default function UserConnect() {
           }).catch((error) => {
             console.log("An error occurred")
           });
-
           connectUser()
+          
         //   return response.user.updateProfile({displayName:userDetails.username})
         })
         
@@ -131,8 +132,8 @@ export default function UserConnect() {
         
         {/* <button onClick={()=>addUsernameHash()}>Add to database</button> */}
         <div className='go-to-profile-container'>
-            <p>Do you have profile?</p>
-            <button onClick={()=>navigate("/mealplanner/profiles")} className="go-to-profile">go to profile</button>
+            <p>Do you have an account?</p>
+            <button onClick={()=>navigate("/mealplanner/login")} className="go-to-profile">Sign In</button>
         </div>
     </div>
   )

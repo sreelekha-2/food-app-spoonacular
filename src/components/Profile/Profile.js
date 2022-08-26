@@ -1,10 +1,46 @@
-import React from 'react'
-import { Outlet, useParams,Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Outlet, useParams,Link,useNavigate } from 'react-router-dom'
+import UsersDetailsService from "../../service/usersData"
+import { app } from '../../firebase-config';
+import { getAuth, signOut } from 'firebase/auth';
 
 export default function Profile() {
 
-    const {profile}=useParams()
+ const [users,setUsers]=useState([])
+  const {profile}=useParams()
+  const navigate=useNavigate()
+
+  const auth=getAuth(app)
+
+  useEffect(()=>{
+    allUsers()
+  },[])  
+
+  const allUsers=async()=>{
+    const data=await UsersDetailsService.getAllUsersDetails();
+    console.log(data)
+    setUsers(data.docs.map(doc=>({...doc.data(),id:doc.id})))
+  }
+
+ if(users.length!==0){
+  const filterResults=users.filter(each=>each.user===profile)
+  console.log(filterResults)
+  const {username,hash}=filterResults[0]
+  localStorage.setItem("usernameHash",JSON.stringify({username:username,hash:hash}))
+ }
+
+ const logoutUser = async () => {
+  try {
+    await signOut(auth);
+    console.log(true);
+    localStorage.removeItem("token")
+    navigate("/mealplanner/login")
     
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+   
   return (
     <>
 
@@ -14,6 +50,7 @@ export default function Profile() {
                 <li  className='meal-option'><Link to="getmeal" className="meal-link">Get Meal Plan Day</Link></li>
                 <li  className='meal-option'><Link to="getmealweek" className="meal-link">Get Meal Plan Week</Link></li>
                 <li  className='meal-option'><Link to="clearmeal" className="meal-link">Clear Meal Plan Day</Link></li>
+                <li  ><button onClick={()=>logoutUser()}  className="meal-link logout-btn meal-option">Sign Out</button></li>
             
             </ul>
 

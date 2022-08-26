@@ -7,11 +7,14 @@ export default function GetMealWeek() {
     const [date,setDate]=useState("")
     const [meals,setMeals]=useState(null)
 
-    const usersDetails=JSON.parse(localStorage.getItem("usersDetails"))
-    const filterResults=usersDetails.filter(each=>each.user===profile)
+    // const usersDetails=JSON.parse(localStorage.getItem("usersDetails"))
+    // const filterResults=usersDetails.filter(each=>each.user===profile)
 
-    const {username,hash}=filterResults[0]
+    // const {username,hash}=filterResults[0]
 
+    const usernameHash=JSON.parse(localStorage.getItem("usernameHash"))
+  
+const {username,hash}=usernameHash
 
     const handler=(e)=>{
         setDate(e.target.value)

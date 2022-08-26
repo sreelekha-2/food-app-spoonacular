@@ -111,6 +111,9 @@
   align-items: center;
   background-color: dodgerblue;
   padding:5px 10px;
+  /* position:fixed;
+  width:100%; */
+  
 }
 .logo{
   text-decoration: none;
@@ -537,4 +540,9 @@
 }
 .dropdown:hover .dropdown-content{
   display:block;
+}
+
+.logout-btn{
+  background-color: transparent;
+  border-width:0px;
 }

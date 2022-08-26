@@ -33,7 +33,12 @@ export default function UserLogin() {
         signInWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
        .then((response) => {
         console.log(response.user);
-        navigate(`/mealplanner/profiles/${response.user.displayName}`)
+        if(response.user){
+            console.log(response.user.accessToken)
+            localStorage.setItem("token",JSON.stringify(response.user.accessToken))
+            navigate(`/mealplanner/${response.user.displayName}`)
+        }
+       
       })
       .catch((err) => alert(err.message));
   

@@ -16,6 +16,11 @@ class UsersDetailsService{
     getAllUsersDetails=()=>{
         return getDocs(usersDetailsCollectionRef)
     }
+
+    getUserDetails=(id)=>{
+        const user=doc(db,"usersDetails",id)
+        return getDoc(user)
+    }
 }
 
 export default new UsersDetailsService()

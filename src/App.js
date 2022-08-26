@@ -1,6 +1,6 @@
 
 import './App.css';
-import {BrowserRouter,Routes,Route} from "react-router-dom"
+import {BrowserRouter,Routes,Route,Navigate} from "react-router-dom"
 import Home from './components/Home';
 import RecipeInfo from './components/Recipes/RecipeInfo';
 import Navbar from './components/Navbar/Navbar';
@@ -22,6 +22,14 @@ import GetMealWeek from './components/MealPlanner/GetMealWeek';
 import CuisineRecipes from './components/CuisineRecipes/CuisineRecipes';
 import UserConnect from './components/Profile/UserConnect';
 
+
+
+function ProtectedRoute({children}){
+  const token=localStorage.getItem("token")
+  console.log(token)
+  return token? children:<Navigate to="/mealplanner/login"/>
+}
+
 function App() {
   return (
     <div>
@@ -40,9 +48,13 @@ function App() {
           <Route path="/userconnect" element={<UserConnect/>}/>
           
            
-          <Route path="/mealplanner/profiles" element={<Profiles/>}/>
-          <Route path="/mealplanner/profiles/login" element={<UserLogin/>}/>
-          <Route path="/mealplanner/profiles/:profile" element={<Profile/>}>
+          {/* <Route path="/mealplanner/profiles" element={<Profiles/>}/> */}
+          <Route path="/mealplanner/login" element={<UserLogin/>}/>
+          <Route path="/mealplanner/:profile" element={<ProtectedRoute>
+            <Profile/>
+          </ProtectedRoute>
+                  
+              }>
             <Route path="addmeal" element={<AddMeal/>}/>
             <Route path="getmeal" element={<GetMeal/>}/>
             <Route path="clearmeal" element={<ClearMeal/>}/>
