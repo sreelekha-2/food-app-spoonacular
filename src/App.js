@@ -14,20 +14,31 @@ import Wines from './components/Recipes/Wines';
 
 import AddMeal from './components/MealPlanner/AddMeal';
 import GetMeal from './components/MealPlanner/GetMeal';
-import Profiles from './components/Profile/Profiles';
+
 import Profile from './components/Profile/Profile';
 import UserLogin from './components/Profile/UserLogin';
 import ClearMeal from './components/MealPlanner/ClearMeal';
 import GetMealWeek from './components/MealPlanner/GetMealWeek';
 import CuisineRecipes from './components/CuisineRecipes/CuisineRecipes';
 import UserConnect from './components/Profile/UserConnect';
+import jwt_decode from "jwt-decode"
 
 
-
-function ProtectedRoute({children}){
+function MealProtectedRoute({children}){
   const token=localStorage.getItem("token")
   console.log(token)
-  return token? children:<Navigate to="/mealplanner/login"/>
+  const profile=localStorage.getItem("profile")
+  console.log(profile)
+ 
+  if(token){
+    const user=jwt_decode(token)
+    console.log(user)
+   return <Navigate to={`/mealplanner/${profile}`}/>
+  }
+  else{
+   return children
+  }
+  // return token ? <Navigate to={`/mealplanner/${profile}`}/>:children
 }
 
 function App() {
@@ -45,14 +56,18 @@ function App() {
           <Route path="/recipes/:search" element={<SearchRecipes/>}/>
           <Route path="/cuisines/:cuisine" element={<CuisineRecipes/>}/>
           <Route path="/mealplanner" element={<MealPlanner/>}/>
-          <Route path="/userconnect" element={<UserConnect/>}/>
+          <Route path="/userconnect" element={<MealProtectedRoute>
+            <UserConnect/>
+          </MealProtectedRoute>}/>
           
            
-          {/* <Route path="/mealplanner/profiles" element={<Profiles/>}/> */}
+
           <Route path="/mealplanner/login" element={<UserLogin/>}/>
-          <Route path="/mealplanner/:profile" element={<ProtectedRoute>
+          <Route path="/mealplanner/:profile" element={
             <Profile/>
-          </ProtectedRoute>
+      
+      
+        
                   
               }>
             <Route path="addmeal" element={<AddMeal/>}/>

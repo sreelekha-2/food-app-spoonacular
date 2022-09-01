@@ -23,6 +23,7 @@ export default function Profile() {
   }
 
  if(users.length!==0){
+  console.log(profile)
   const filterResults=users.filter(each=>each.user===profile)
   console.log(filterResults)
   const {username,hash}=filterResults[0]
@@ -34,7 +35,7 @@ export default function Profile() {
     await signOut(auth);
     console.log(true);
     localStorage.removeItem("token")
-    navigate("/mealplanner/login")
+    navigate("/userconnect")
     
   } catch (err) {
     console.log(err.message);

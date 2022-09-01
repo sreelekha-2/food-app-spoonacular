@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState,useEffect } from 'react'
+import jwt_decode from "jwt-decode"
 import { useNavigate } from 'react-router-dom'
 import UsernamesService from "../../service/service"
 import UsersDetailsService from "../../service/usersData"
@@ -9,6 +10,7 @@ export default function UserConnect() {
 
     const [userDetails,setUserDetails]=useState({username:"",firstName:"",lastName:"",email:"",password:"",displayName:""})
     
+    const [users,setUsers]=useState([])
     const navigate=useNavigate()
     const formRef=useRef()
     
@@ -21,11 +23,11 @@ export default function UserConnect() {
       
     }
 
-    const connectUser=async()=>{
+    const connectUser=async(userObject)=>{
         const url=`https://api.spoonacular.com/users/connect?apiKey=${process.env.REACT_APP_API_KEY}`;
         const options={
             method:"POST",
-            body:JSON.stringify(userDetails),
+            body:JSON.stringify(userObject),
             headers:{
                 "Content-Type":"application/json"
             }
@@ -36,12 +38,33 @@ export default function UserConnect() {
       
         if(res.ok){
             alert("user successfully registered")
-            addUserData({...data,user:userDetails.username,password:userDetails.password})
-            navigate("/mealplanner/login")
+            console.log(userObject)
+            console.log(users)
+             
+            const myUsers=await allUsers()
+            console.log(myUsers)
+            const dbUser=myUsers.filter(each=>each.email===userObject.email)
+            console.log(dbUser)
+            if(dbUser.length===0){
+                addUserData({...data,user:userObject.firstName,email:userObject.email})
+            }
+            
+          
+            
+            // navigate("/mealplanner/login")
+            navigate(`/mealplanner/${userObject.firstName}`)
         }
       
         formRef.current.reset()
     }
+
+    const allUsers=async()=>{
+        const data=await UsersDetailsService.getAllUsersDetails();
+        console.log(data)
+        const myUsers=data.docs.map(doc=>({...doc.data(),id:doc.id}))
+        console.log(myUsers)
+        return myUsers
+      }
 
     const signUp=()=>{
     
@@ -58,9 +81,8 @@ export default function UserConnect() {
           }).catch((error) => {
             console.log("An error occurred")
           });
-          connectUser()
-          
-        //   return response.user.updateProfile({displayName:userDetails.username})
+          connectUser(userDetails)
+ 
         })
         
         .catch((err) => alert(err.message))
@@ -69,18 +91,7 @@ export default function UserConnect() {
     const submitDetails=(e)=>{
         e.preventDefault();
         signUp()
-        // connectUser()
-        
-        // try{
-        //     await UsernamesService.addUser(userDetails)
-
-        //     console.log("user added")
-        //     await connectUser()
-        // }
-
-        // catch(err){
-        //     console.log(err.message)
-        // } 
+       
 
     }
 
@@ -97,6 +108,39 @@ export default function UserConnect() {
     }
 
     
+    function handleCallbackResponse(response){
+        console.log("token : "+response.credential)
+        console.log(response)
+        const user=jwt_decode(response.credential)
+        localStorage.setItem("token",JSON.stringify(response.credential))
+        localStorage.setItem("profile",user.given_name)
+     
+        const userData={
+            username:user.name,
+            firstName:user.given_name,
+            lastName:user.family_name,
+            email:user.email
+        }
+        console.log(userData)
+        connectUser(userData)
+        // navigate(`/mealplanner/${userData.firstName}`)
+    }
+
+    useEffect(()=>{
+ 
+        /*global google*/
+
+        google.accounts.id.initialize({
+            client_id:"615413987915-1q927mnqq8661hnc55vcn755f26liroh.apps.googleusercontent.com",
+            callback:handleCallbackResponse
+        })
+
+        google.accounts.id.renderButton(
+            document.getElementById("signInDiv"),
+            {theme:"outline",size:"large"}
+        )
+
+    },[])
 
   return (
     <div className="mealplan-container">
@@ -131,6 +175,10 @@ export default function UserConnect() {
         </form>
         
         {/* <button onClick={()=>addUsernameHash()}>Add to database</button> */}
+        <div>
+            <p>OR</p>
+            <div id="signInDiv"></div>
+        </div>
         <div className='go-to-profile-container'>
             <p>Do you have an account?</p>
             <button onClick={()=>navigate("/mealplanner/login")} className="go-to-profile">Sign In</button>
