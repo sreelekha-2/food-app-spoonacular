@@ -32,8 +32,8 @@ function MealProtectedRoute({children}){
  
   if(token){
     const user=jwt_decode(token)
-    console.log(user)
-   return <Navigate to={`/mealplanner/${profile}`}/>
+    // console.log(user)
+   return <Navigate to={`/mealplanner/${user.given_name}`}/>
   }
   else{
    return children
