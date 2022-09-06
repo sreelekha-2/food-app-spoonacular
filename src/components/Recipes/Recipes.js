@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Category from '../CuisineRecipes/Category'
 import Searchbar from '../Searchbar/Searchbar'
+import { Col, Container, Row } from 'react-bootstrap'
 
 
 export default function Recipes() {
@@ -47,35 +48,41 @@ export default function Recipes() {
 
     <Searchbar/>
 
-    <div className='container'>
+    <Container>
         <Category/>
-        <h2>Popular Recipes</h2>
-        <ul className="recipes-container">
+        <h2 className='popular-recipes-title'>Popular Recipes</h2>
+        <Row className="recipes-container ">
             {popularRecipes.map(recipe=>(
-                <Link className="recipe-link"  to={`/recipe/${recipe.id}`} key={recipe.id}>
-                <li className="recipe" >
-                    <h4 className="recipe-title">{recipe.title}</h4>
-                    <img className="recipe-img" src={recipe.image} alt="recipe"/>
-                </li>
-                </Link>
-                
-            ))}
-        </ul>
-
-        <h2>Vegetarian Recipes</h2>
-            <ul className="recipes-container">
-                {vegRecipes.map(recipe=>(
-                    <Link className="recipe-link"  to={`/recipe/${recipe.id}`} key={recipe.id}>
+                <Col xs={12} md={6} lg={4} key={recipe.id}>
+                    <Link className="recipe-link"  to={`/recipe/${recipe.id}`} >
                     <li className="recipe" >
                         <h4 className="recipe-title">{recipe.title}</h4>
                         <img className="recipe-img" src={recipe.image} alt="recipe"/>
                     </li>
+                </Link>
+                </Col>
+               
+                
+            ))}
+        </Row>
+
+        <h2 className='popular-recipes-title'>Vegetarian Recipes</h2>
+            <Row className="recipes-container">
+                {vegRecipes.map(recipe=>(
+                    <Col sm={12} md={6} lg={4} key={recipe.id}>
+                        <Link className="recipe-link"  to={`/recipe/${recipe.id}`} >
+                        <li className="recipe" >
+                            <h4 className="recipe-title">{recipe.title}</h4>
+                            <img className="recipe-img" src={recipe.image} alt="recipe"/>
+                        </li>
                     </Link>
+                    </Col>
+                    
                     
                 ))}
-            </ul>
+            </Row>
 
-        </div>
+        </Container>
     </>
   )
 }

@@ -1,10 +1,12 @@
 
+.link{
+  color: white!important;
+}
+/* .container{
 
-.container{
-  /* margin:10px 30px; */
   padding:0px 70px;
   font-family: Roboto;
-}
+} */
 .loader{
   display:flex;
   justify-content: center;
@@ -85,24 +87,28 @@
 .recipes-container{
   list-style-type: none;
   padding-left:0;
-  display:flex;
-  flex-wrap:wrap;
-  /* padding:10px 40px; */
+  /* display:flex;
+  flex-wrap:wrap; */
+  padding:20px 0px;
  
 }
 .recipe-link{
   text-decoration: none;
+  display: block;
 }
 .recipe-title{
   color:blacK;
-  width:380px;
+  font-size:16px;
+  
+  /* width:380px; */
 }
 .recipe{
-  margin:10px;
+  margin:20px 10px;
 }
 .recipe-img{
-  min-height:300px;
-  width:380px;
+  /* min-height:300px; */
+  margin-top: 20px;
+  width:280px;
   border-radius:2rem;
 }
 .nav{
@@ -128,8 +134,8 @@
   padding:10px;
 }
 .recipe-info-container{
-  margin:15px 60px;
-  padding:0px 30px;
+ 
+  padding:30px 0px;
 }
 .recipe-wrapper{
   display:flex;
@@ -142,9 +148,9 @@
   margin:8px;
   cursor: pointer;
 }
-.btn-container{
+/* .btn-container{
   margin:20px 0px 0px 35px;
-}
+} */
 .active{
   background-color: darkgreen;
   color:white;
@@ -183,6 +189,12 @@
 .meal-url{
   text-decoration: none;
 }
+/* .taste-details-container{
+  padding-left:0;
+}
+.price-details-container{
+  padding-left: 0;
+} */
 .ingredients-container{
   list-style-type: none;
   padding-left: 0;
@@ -193,8 +205,8 @@
   height:100px;
 }
 .ingredient{
-  width:150px;
-  margin:10px;
+  /* width:130px; */
+  margin:8px;
   text-align: center;
 }
 .ingredients-input{
@@ -428,6 +440,11 @@
   color:beige;
 
 }
+
+.cuisine-link:hover{
+  text-decoration: none;
+  color:beige!important;
+}
 .cuisine-name{
   margin:0;
   font-size:11px;
@@ -545,4 +562,44 @@
 .logout-btn{
   background-color: transparent;
   border-width:0px;
+}
+
+.recipe-info-img{
+  margin-bottom: 10px;
+  width:280px;
+}
+@media screen and (min-width:768px){
+  .recipe-img{
+    width:300px
+  }
+  .recipe-info-img{
+    width:350px
+  }
+ 
+}
+@media screen and (min-width:576px) and (max-width:767px){
+  .recipe-img{
+    width:500px
+  }
+  .recipe-info-img{
+    width:500px
+  }
+ 
+}
+@media screen and (min-width:320px) and (max-width:576px){
+  .recipes-container{
+    text-align: center;
+  }
+  .popular-recipes-title{
+    text-align: center;
+  }
+  .recipe-wrapper{
+    text-align: center;
+  }
+  .ingredients-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }

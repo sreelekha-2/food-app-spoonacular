@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import {Circles} from "react-loader-spinner"
 
 import SearchbarIngredients from '../Searchbar/SearchbarIngredients'
+import { Col, Container, Row } from 'react-bootstrap'
 
 export default function RecipesByIngredients(props) {
     const {ingredients}=useParams()
@@ -33,18 +34,21 @@ export default function RecipesByIngredients(props) {
         <Circles /></div>:<div>
         
         <SearchbarIngredients/>
-        <div className='container'>
-             <ul className="recipes-container">
+        <Container>
+             <Row className="recipes-container">
               {recipes.map(recipe=>(
-                  <Link className="recipe-link"  to={`/recipe/${recipe.id}`} key={recipe.id}>
-                  <li className="recipe" >
-                      <h4 className="recipe-title">{recipe.title}</h4>
-                      <img className="recipe-img" src={recipe.image} alt="recipe"/>
-                  </li>
-                  </Link>      
+                <Col sm={12} md={6} lg={4} key={recipe.id}>
+                    <Link className="recipe-link"  to={`/recipe/${recipe.id}`} >
+                    <li className="recipe" >
+                        <h4 className="recipe-title">{recipe.title}</h4>
+                        <img className="recipe-img" src={recipe.image} alt="recipe"/>
+                    </li>
+                    </Link> 
+                </Col>
+                      
               ))}
-          </ul>
-          </div>
+          </Row>
+          </Container>
           </div>}
         
           

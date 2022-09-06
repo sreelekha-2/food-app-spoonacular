@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 // import Searchbar from './Searchbar'
 import {Circles} from "react-loader-spinner"
+import { Col, Container, Row } from 'react-bootstrap'
 
 export default function RecipeInfo() {
     const {id}=useParams()
@@ -58,14 +59,14 @@ export default function RecipeInfo() {
   return (
     <>
     
-     <div className="recipe-info-container">
+     <Container className="recipe-info-container">
        
-        <div className="recipe-wrapper">
-            <div>
+        <Row className="recipe-wrapper">
+            <Col md={6} sm={12}>
                 <p>{info.title}</p>
-                <img className="recipe-img" src={info.image} alt="recipe"/>
-            </div>
-            <div className="btn-container">
+                <img className='recipe-info-img' src={info.image} alt="recipe"/>
+            </Col>
+            <Col md={6} sm={12} className="btn-container">
                 <button className={`info-btn ${ingredientClassName}`} onClick={()=>changeActiveTab("ingredients")}>Ingredients</button>
                 <button className={`info-btn ${processClassName}`} onClick={()=>changeActiveTab("process")}>Recipe Process</button>
                 <button className={`info-btn ${tasteClassName}`} onClick={()=>changeActiveTab("taste")}>Taste</button>
@@ -88,7 +89,7 @@ export default function RecipeInfo() {
 
                 {activeTab==="process"&& !isLoading &&<p dangerouslySetInnerHTML={{__html:info.instructions}}></p>}
 
-                {activeTab==="taste"  && !isLoading && tasteDetails && <ul>
+                {activeTab==="taste"  && !isLoading && tasteDetails && <ul className="taste-details-container">
                     <li>sweetness:{tasteDetails.sweetness}</li>
                     <li>saltiness:{tasteDetails.saltiness}</li>
                     <li>sourness:{tasteDetails.sourness}</li>
@@ -111,11 +112,11 @@ export default function RecipeInfo() {
                     </div>)
                     }
             
-            </div>
+            </Col>
           
 
-        </div>
-    </div>
+        </Row>
+    </Container>
     </>
     
   )
