@@ -23,7 +23,7 @@ export default function RecipeInfo() {
     const recipeInfo=async()=>{
         const res=await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_API_KEY}`)
         const data=await res.json()
-        console.log(data)
+      
         setInfo(data)
         setIngredients(data.extendedIngredients)
         setIsLoading(false)
@@ -33,14 +33,14 @@ export default function RecipeInfo() {
     const getTasteDetails=async()=>{
         const res=await fetch(`https://api.spoonacular.com/recipes/${id}/tasteWidget.json?apiKey=${process.env.REACT_APP_API_KEY}`)
         const data=await res.json()
-        console.log(data)
+       
         setTasteDetails(data)
     }
 
     const getPriceDetails=async()=>{
         const res=await fetch(`https://api.spoonacular.com/recipes/${id}/priceBreakdownWidget.json?apiKey=${process.env.REACT_APP_API_KEY}`)
         const data=await res.json()
-        console.log(data)
+       
         setPriceDetails(data)
     }
 

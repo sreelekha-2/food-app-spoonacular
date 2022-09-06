@@ -10,7 +10,7 @@ export default function Wines() {
     const [winesData,setWinesData]=useState([])
     const [loading,setLoading]=useState(false)
     const getSelectedVal=(e)=>{
-        console.log(e.target.value)
+       
         setWineName(e.target.value)
     }
 

@@ -34,8 +34,10 @@ export default function UserLogin() {
        .then((response) => {
         console.log(response.user);
         if(response.user){
-            console.log(response.user.accessToken)
+            // console.log(response.user.accessToken)
+            // console.log(response.user.displayName)
             localStorage.setItem("token",JSON.stringify(response.user.accessToken))
+            localStorage.setItem("profile",response.user.displayName)
             navigate(`/mealplanner/${response.user.displayName}`)
         }
        

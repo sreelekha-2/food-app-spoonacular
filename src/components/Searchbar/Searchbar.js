@@ -15,10 +15,9 @@ export default function Searchbar() {
     }
 
     window.onclick=function(e){
-      console.log(e.target)
-      console.log(formRef)
+      
       if(e.target===formRef.current){
-        console.log("true")
+      
         setSuggestions([])
       }
     }
@@ -30,12 +29,12 @@ export default function Searchbar() {
     }
   
     const getSearchText=(e)=>{
-      console.log(e.target.value)
+      
       setSearchText(e.target.value)
       fetch(`https://api.spoonacular.com/recipes/autocomplete?apiKey=${process.env.REACT_APP_API_KEY}&number=10&query=${searchText}`)
       .then(res=>res.json())
       .then(data=>{
-        console.log(data)
+       
         setSuggestions(data)
       })
       .catch(e=>console.log(e))

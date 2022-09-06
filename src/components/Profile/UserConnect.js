@@ -4,8 +4,10 @@ import { useNavigate } from 'react-router-dom'
 import UsernamesService from "../../service/service"
 import UsersDetailsService from "../../service/usersData"
 import { app } from '../../firebase-config'
-import {getAuth, signInWithPopup, signInWithCredential,GoogleAuthProvider, GithubAuthProvider, createUserWithEmailAndPassword,updateProfile} from "firebase/auth";
-
+import { auth } from 'firebase/app';
+import {getAuth,signInWithEmailAndPassword, fetchSignInMethodsForEmail,signInWithPopup, signInWithCredential,GoogleAuthProvider, GithubAuthProvider, createUserWithEmailAndPassword,updateProfile} from "firebase/auth";
+// import firebase from "firebase"
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 
 
 export default function UserConnect() {
@@ -39,23 +41,16 @@ export default function UserConnect() {
       
       
         if(res.ok){
-            alert("user successfully registered")
-           
-             
+            alert("user successfully registered")  
             const myUsers=await allUsers()
             console.log(myUsers)
             const dbUser=myUsers.filter(each=>each.email===userObject.email)
             console.log(dbUser)
             if(dbUser.length===0){
-                addUserData({...data,user:userObject.firstName,email:userObject.email})
+                addUserData({...data,user:userObject.username,email:userObject.email})
             }
-            
-         
             navigate("/mealplanner/login")
-          
-            
-           
-            
+       
         }
       
         formRef.current.reset()
@@ -83,12 +78,7 @@ export default function UserConnect() {
             if(dbUser.length===0){
                 addUserData({...data,user:userObject.firstName,email:userObject.email})
             }
-            
-           
-        
-            navigate(`/mealplanner/${userObject.firstName}`)
-            
-            
+            navigate(`/mealplanner/${userObject.firstName}`)   
         }
       
         formRef.current.reset()
@@ -144,16 +134,17 @@ export default function UserConnect() {
         }
     }
 
+
+    
     
     function handleCallbackResponse(response){
-        console.log("token : "+response.credential)
-        console.log(response)
+        
         const token = response.credential;
         const credential = GoogleAuthProvider.credential(token);
-       
         const user=jwt_decode(response.credential)
+
         localStorage.setItem("token",JSON.stringify(response.credential))
-        // localStorage.setItem("profile",user.given_name)
+        localStorage.setItem("profile",user.given_name)
      
         const userData={
             username:user.name,
@@ -161,15 +152,12 @@ export default function UserConnect() {
             lastName:user.family_name,
             email:user.email
         }
-        console.log(userData)
+       
         signInWithCredential(auth, credential).catch((error) => {
-            // Handle Errors here.
-            const errorCode = error.code;
+            
             const errorMessage = error.message;
             console.log(errorMessage)
-            // The email of the user's account used.
-            const email = error.email;
-            // The credential that was used.
+            
             const credential = GoogleAuthProvider.credentialFromError(error);
             // ...
           });
@@ -177,6 +165,24 @@ export default function UserConnect() {
       
     }
 
+    const promptUserForPassword=()=>{
+        // window.prompt("enter password")
+        return "F@milyisMyLife4"
+    }
+  
+   const uiConfig = {
+        signInFlow: "popup",
+        signInOptions: [
+          new GoogleAuthProvider().PROVIDER_ID,
+          
+         new GithubAuthProvider().PROVIDER_ID,
+        
+        ],
+        callbacks: {
+          signInSuccess: () => false
+        }
+      }
+            
     const loginWithGithub=()=>{
         
         signInWithPopup(auth,gitHubProvider)
@@ -190,17 +196,33 @@ export default function UserConnect() {
             console.log(result)
             // ...
           }).catch((error) => {
-          
-            const errorCode = error.code;
-            const errorMessage = error.message;
        
             const email = error.customData.email;
        
             const credential = GithubAuthProvider.credentialFromError(error);
-            console.log(error.message)
-            console.log(email)
-            console.log(errorCode)
+           
             console.log(credential)
+         
+            var pendingCred = credential;
+            if (error.code === 'auth/account-exists-with-different-credential') {
+                fetchSignInMethodsForEmail(auth,email).then(function(methods) {
+                console.log(methods)
+               
+                const getProviderForProviderId=(method)=>{
+
+                }
+                  var provider = getProviderForProviderId(methods[0]);
+      
+                signInWithPopup(auth,provider).then(function(result) {
+     
+                    result.user.linkAndRetrieveDataWithCredential(pendingCred).then(function(usercred) {
+        
+        //   goToApp();
+                });
+      });
+                 
+            })
+        }
             // ...
           });
         
@@ -272,6 +294,11 @@ export default function UserConnect() {
             <p>Do you have an account?</p>
             <button onClick={()=>navigate("/mealplanner/login")} className="go-to-profile">Sign In</button>
         </div>
+
+        <StyledFirebaseAuth
+            uiConfig={uiConfig}
+            // firebaseAuth={getAuth}
+          />
     </div>
   )
 }

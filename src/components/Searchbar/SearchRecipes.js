@@ -16,7 +16,7 @@ export default function SearchRecipes() {
     const getSearchResults=async()=>{
         const res=await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${search}`)
         const data=await res.json()
-        console.log(data)
+      
         setSearchRecipes(data.results)
         setIsLoading(false)
     }

@@ -16,7 +16,7 @@ export default function RecipesByIngredients(props) {
         fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.REACT_APP_API_KEY}&ingredients=${ingredientsText}`)
         .then(res=>res.json())
         .then(data=>{
-            console.log(data)
+            
             setRecipes(data)
             setIsLoading(false)
         })

@@ -35,6 +35,8 @@ export default function Profile() {
     await signOut(auth);
     console.log(true);
     localStorage.removeItem("token")
+    localStorage.removeItem("profile")
+    localStorage.removeItem("usernameHash")
     navigate("/userconnect")
     
   } catch (err) {

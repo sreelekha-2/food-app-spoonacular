@@ -20,7 +20,7 @@ export default function Recipes() {
         if(localStorage.getItem("popularRecipes")==undefined){
             const res=await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=10`)
             const data=await res.json()
-            console.log(data)
+         
             localStorage.setItem("popularRecipes",JSON.stringify(data.recipes))
             setPopularRecipes(data.recipes)
         }
@@ -34,7 +34,7 @@ export default function Recipes() {
         if(localStorage.getItem("vegRecipes")==undefined){
             const res=await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&tags=vegetarian,diet&number=10`)
             const data=await res.json()
-            console.log(data)
+            
             localStorage.setItem("vegRecipes",JSON.stringify(data.recipes))
             setVegRecipes(data.recipes)
         }
