@@ -62,11 +62,11 @@ export default function RecipeInfo() {
      <Container className="recipe-info-container">
        
         <Row className="recipe-wrapper">
-            <Col md={6} sm={12}>
+            <div className='col-md-6 col-sm-12'>
                 <p>{info.title}</p>
                 <img className='recipe-info-img' src={info.image} alt="recipe"/>
-            </Col>
-            <Col md={6} sm={12} className="btn-container">
+            </div>
+            <Col  xs={6}  className="btn-container d-flex flex-column align-items-center">
                 <button className={`info-btn ${ingredientClassName}`} onClick={()=>changeActiveTab("ingredients")}>Ingredients</button>
                 <button className={`info-btn ${processClassName}`} onClick={()=>changeActiveTab("process")}>Recipe Process</button>
                 <button className={`info-btn ${tasteClassName}`} onClick={()=>changeActiveTab("taste")}>Taste</button>

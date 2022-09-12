@@ -95,6 +95,15 @@
 .recipe-link{
   text-decoration: none;
   display: block;
+
+  border-radius:12px;
+ 
+}
+.recipe-link:hover .recipe-img{
+  transform:scale(1.05);
+  /* transition: .1s ease-out; */
+  /* transition-timing-function: linear; */
+  transition:transform 0.35s ease-in-out;
 }
 .recipe-title{
   color:blacK;
@@ -105,11 +114,13 @@
 .recipe{
   margin:20px 10px;
 }
+
 .recipe-img{
   /* min-height:300px; */
   margin-top: 20px;
   width:280px;
   border-radius:2rem;
+ 
 }
 .nav{
   display:flex;
@@ -148,9 +159,11 @@
   margin:8px;
   cursor: pointer;
 }
-/* .btn-container{
-  margin:20px 0px 0px 35px;
-} */
+.btn-container{
+  /* margin:20px 0px 0px 35px; */
+  display:flex;
+  flex-wrap:wrap;
+}
 .active{
   background-color: darkgreen;
   color:white;
@@ -189,12 +202,14 @@
 .meal-url{
   text-decoration: none;
 }
-/* .taste-details-container{
+.taste-details-container{
   padding-left:0;
+  list-style-type: none;
 }
 .price-details-container{
   padding-left: 0;
-} */
+  list-style-type: none;
+}
 .ingredients-container{
   list-style-type: none;
   padding-left: 0;
@@ -417,6 +432,7 @@
 }
 .cuisine-container{
   display:flex;
+  flex-wrap:wrap;
   justify-content: center;
   list-style-type: none;
   padding-left:0;
@@ -584,6 +600,9 @@
   .recipe-info-img{
     width:500px
   }
+  .input-container{
+    width:80%;
+  }
  
 }
 @media screen and (min-width:320px) and (max-width:576px){
@@ -602,4 +621,14 @@
     align-items: center;
     justify-content: center;
   }
+  .input-container{
+    width:80%;
+  }
+  /* .cuisine{
+    width:100px;
+    height:100px;
+  }
+  .cuisine-name{
+    font-size:9px;
+  } */
 }
