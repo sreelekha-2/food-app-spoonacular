@@ -1,16 +1,29 @@
 import React,{useRef, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import {BiSearch} from "react-icons/bi"
+import { FaShoppingCart } from 'react-icons/fa'
+import { Button,Badge } from 'react-bootstrap'
+import { useSelector,useDispatch } from 'react-redux'
+import { getCartData } from '../../redux/reducer'
+import { useEffect } from 'react'
 
 export default function Searchbar() {
     const navigate=useNavigate()
     const [searchText,setSearchText]=useState("")
     const [suggestions,setSuggestions]=useState([])
     const formRef=useRef()
+    const dispatch=useDispatch()
+    
+  const {items}=useSelector(state=>state.cart)
+
+
+  useEffect(()=>{
+    dispatch(getCartData())
+  },[])
 
     const getResults=(e)=>{
      e.preventDefault()
-     navigate(`/recipes/${searchText}`)
+    //  navigate(`/recipes/${searchText}`)
     
     }
 
@@ -41,21 +54,32 @@ export default function Searchbar() {
     
 
     }
+
+    const onCartClick=()=>{
+      console.log("clicked")
+      navigate("/cart")
+    }
   return (
-    <div className='form-container'>
-        <h2 className='search-title'>Search Your Favorite</h2>
-        <form onSubmit={getResults} ref={formRef}>
-            <div className='input-container'>
-                <BiSearch/>
-                <input placeholder="search your favorite" className='search-bar' type="text" value={searchText} onChange={getSearchText}/>
+    <div>
+       
+        <form className='form-container' onSubmit={getResults} ref={formRef}>
+            <div className='input-container border-end'>
+                <BiSearch className='search-icon'/>
+                <input placeholder="Search" className='search-bar' type="text" value={searchText} onChange={getSearchText}/>
             </div>
-            {suggestions.length!==0 &&  <ul className='suggestions-container'>
+            {/* {suggestions.length!==0 &&  <ul className='suggestions-container'>
                   {suggestions.map(suggestion=>(
                     <li key={suggestion.id} className="suggestion" onClick={()=>suggestionClick(suggestion.title)}>{suggestion.title}</li>
                   ))}
-            </ul>}
+            </ul>} */}
            
 
+            <button className='position-relative btn btn-transparent' onClick={onCartClick}>
+              <FaShoppingCart />
+              <Badge className='position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger'>
+              {items.length}
+              </Badge>
+          </button>
         </form>
     </div>
     

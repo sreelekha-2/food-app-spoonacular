@@ -1,27 +1,33 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import Navbar from '../Navbar/Navbar'
 import Searchbar from '../Searchbar/Searchbar'
-
+import image from "../../assets/food-img.png"
 
 export default function Home() {
     const navigate=useNavigate()
     
   return (
-    <>
-     <Searchbar/>
+    <div className='home-page'>
+       <Navbar/>
+     
      <div className='container'>
-        <div className='home-banner'>
-          <img className="banner-img" src="https://blog.dineout-cdn.co.in/blog/wp-content/uploads/2018/05/Kolkata-Blog-Banner-1030x538.png" alt="banner"/>
+       
+        <div className='home-banner row'>
+         
             
-          <div>
-              <h2>You have a lot on your plate, let Favoreats help with dinner</h2>
-              <p>Take a few minutes to tell us about your dinner goals and preferences, and we will create a meal plan and suggestions for you that draw from recipes you already have and from our database of over 1 million recipes!</p>
+          <div className='col-5'>
+              <h2 className='banner-main-head'><span className='banner-head'>Fast</span> <span className='banner-subhead'>Food <br></br> Delivery</span></h2>
+              <p>Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium</p>
               <button className="explore-btn" onClick={()=>navigate("/recipes")}>Explore More</button>
           </div>
-          
+          <div className='col-7'>
+          <img className="banner-img" src={image} alt="banner"/>
+          </div>
+     
         </div>
       </div>
-    </>
+    </div>
    
   )
 }

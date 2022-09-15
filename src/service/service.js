@@ -2,21 +2,28 @@ import {db} from "../firebase-config"
 
 import {collection,getDocs,getDoc,addDoc,updateDoc,deleteDoc,doc} from "firebase/firestore"
 
-const usernamesCollectionRef=collection(db,"users")
-const usersDetailsCollectionRef=collection(db,"usersDetails")
-class UsernamesService{
+const cartDataCollectionRef=collection(db,"cartData")
 
-    addUser=(newUser)=>{
-        return addDoc(usernamesCollectionRef,newUser)
+class CartDataService{
+
+    addCartData=(data)=>{
+        return addDoc(cartDataCollectionRef,data)
     }
 
-    addUsersDetails=(newUser)=>{
-        return addDoc(usersDetailsCollectionRef,newUser)
-    }
+   updateCartData=(id,updateBook)=>{
+    const itemDoc=doc(db,"cartData",id)
+    
+    return updateDoc(itemDoc,updateBook)
+   }
 
-    getAllUsers=()=>{
-        return getDocs(usernamesCollectionRef)
+   getSingleItem=(id)=>{
+    const itemDoc=doc(db,"cartData",id)
+    return getDoc(itemDoc)
+   }
+
+    getTotalCartData=()=>{
+        return getDocs(cartDataCollectionRef)
     }
 }
 
-export default new UsernamesService()
+export default new CartDataService()

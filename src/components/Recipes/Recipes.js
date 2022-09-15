@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom'
 import Category from '../CuisineRecipes/Category'
 import Searchbar from '../Searchbar/Searchbar'
 import { Col, Container, Row } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import {updateCart} from "../../redux/reducer"
+import Navbar from '../Navbar/Navbar'
+import axios from 'axios'
+import CartDataService from "../../service/service"
 
 
 export default function Recipes() {
@@ -10,6 +15,11 @@ export default function Recipes() {
     const [popularRecipes,setPopularRecipes]=useState([])
     
     const [vegRecipes,setVegRecipes]=useState([])
+
+  
+
+    const dispatch=useDispatch()
+    const {items}=useSelector(state=>state.cart)
 
     useEffect(()=>{
         getPopularRecipes()
@@ -43,23 +53,73 @@ export default function Recipes() {
             setVegRecipes(JSON.parse(localStorage.getItem("vegRecipes")))
         }
     }
+
+  
+    const addToCart=(id)=>{
+    //    dispatch(updateCount())
+
+       console.log(id)
+       fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_API_KEY}`)
+      
+      .then(res=>res.json())
+      .then(async data=>{
+
+        const details={title:data.title,image:data.image,itemId:data.id,quantity:1}
+
+        // const cartArr=await totalCartData()
+        // console.log(cartArr)
+
+        if(items.some(item=>item.itemId===id)){
+            alert("product already added to cart")       
+        }
+        else{
+            await addCartDataToDatabase(details)
+            dispatch(updateCart(details))
+        }
+
+
+      })
+      .catch(err=>console.log(err))
+    }
+   
+    const addCartDataToDatabase=async data=>{
+        try{
+            await CartDataService.addCartData(data)
+            alert("product added successfully")
+        }
+        catch(err){
+            console.log(err.message)
+        }
+    }
+    
   return (
     <>
 
-    <Searchbar/>
+    <Navbar/>
 
     <Container>
         <Category/>
         <h2 className='popular-recipes-title'>Popular Recipes</h2>
         <Row className="recipes-container ">
             {popularRecipes.map(recipe=>(
-                <Col xs={12} md={6} lg={4} key={recipe.id}>
-                    <Link className="recipe-link"  to={`/recipe/${recipe.id}`} >
-                    <li className="recipe" >
-                        <h4 className="recipe-title">{recipe.title}</h4>
-                        <img className="recipe-img" src={recipe.image} alt="recipe"/>
-                    </li>
-                </Link>
+                <Col className="recipe"  xs={12} md={6} lg={4} key={recipe.id}>
+                    
+                    <div>
+                        <Link className="recipe-link"  to="" >
+                           <div className='recipe-img-container'>
+                                <img className="recipe-img" src={recipe.image} alt="recipe"/>
+                            </div>
+                            
+                            <div className="recipe-description">
+                                <div className='recipe-title-wrap'>
+                                    <h4 className="recipe-title">{recipe.title}</h4>
+                                </div>
+                                
+                                <button className='btn btn-warning' onClick={()=>addToCart(recipe.id)}>Add To Cart</button>
+                            </div>
+                        </Link>
+                    </div>
+             
                 </Col>
                
                 
@@ -69,14 +129,25 @@ export default function Recipes() {
         <h2 className='popular-recipes-title'>Vegetarian Recipes</h2>
             <Row className="recipes-container">
                 {vegRecipes.map(recipe=>(
-                    <Col sm={12} md={6} lg={4} key={recipe.id}>
+                    <Col className="recipe"  xs={12} md={6} lg={4} key={recipe.id}>
+                    
+                    <div>
                         <Link className="recipe-link"  to={`/recipe/${recipe.id}`} >
-                        <li className="recipe" >
-                            <h4 className="recipe-title">{recipe.title}</h4>
-                            <img className="recipe-img" src={recipe.image} alt="recipe"/>
-                        </li>
-                    </Link>
-                    </Col>
+                           <div className='recipe-img-container'>
+                                <img className="recipe-img" src={recipe.image} alt="recipe"/>
+                            </div>
+                            
+                            <div className="recipe-description">
+                                <div className='recipe-title-wrap'>
+                                    <h4 className="recipe-title">{recipe.title}</h4>
+                                </div>
+                                
+                                <button className='btn btn-warning' onClick={()=>addToCart(recipe.id)}>Add To Cart</button>
+                            </div>
+                        </Link>
+                    </div>
+             
+                </Col>
                     
                     
                 ))}

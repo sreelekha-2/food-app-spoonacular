@@ -1,12 +1,12 @@
 import React, { useRef, useState,useEffect } from 'react'
 import jwt_decode from "jwt-decode"
 import { useNavigate } from 'react-router-dom'
-import UsernamesService from "../../service/service"
+
 import UsersDetailsService from "../../service/usersData"
 import { app } from '../../firebase-config'
 import { auth } from 'firebase/app';
 import {getAuth,signInWithEmailAndPassword, fetchSignInMethodsForEmail,signInWithPopup, signInWithCredential,GoogleAuthProvider, GithubAuthProvider, createUserWithEmailAndPassword,updateProfile} from "firebase/auth";
-// import firebase from "firebase"
+
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 
 

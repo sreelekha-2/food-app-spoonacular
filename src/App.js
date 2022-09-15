@@ -22,6 +22,7 @@ import GetMealWeek from './components/MealPlanner/GetMealWeek';
 import CuisineRecipes from './components/CuisineRecipes/CuisineRecipes';
 import UserConnect from './components/Profile/UserConnect';
 import jwt_decode from "jwt-decode"
+import Cart from './components/Cart/Cart';
 
 
 function MealProtectedRoute({children}){
@@ -45,7 +46,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-      <Navbar/>
+      {/* <Navbar/> */}
       
         <Routes>
           <Route path="/" element={<Home/>}/>
@@ -64,11 +65,7 @@ function App() {
 
           <Route path="/mealplanner/login" element={<UserLogin/>}/>
           <Route path="/mealplanner/:profile" element={
-            <Profile/>
-      
-      
-        
-                  
+            <Profile/>      
               }>
             <Route path="addmeal" element={<AddMeal/>}/>
             <Route path="getmeal" element={<GetMeal/>}/>
@@ -78,6 +75,7 @@ function App() {
           <Route path="/recipeByIngredients" element={<RecipesByIngredientsHome/>}/>
           <Route path="/recipeByIngredients/:ingredients" element={<RecipesByIngredients/>}/>
           <Route path="/wines" element={<Wines/>}/>
+          <Route path="/cart" element={<Cart/>}/>
         
         </Routes>
       </BrowserRouter>

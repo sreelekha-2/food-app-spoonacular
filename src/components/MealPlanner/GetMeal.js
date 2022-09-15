@@ -3,12 +3,7 @@ import { useParams } from 'react-router-dom'
 import UsersDetailsService from '../../service/usersData'
 export default function GetMeal() {
 
-    // useEffect(()=>{
-    //     // allUsersDetails()
-    //     singleUserDetails()
-    // },[])
-
-    // const {profile}=useParams()
+    
     const [meals,setMeals]=useState([])
     const [date,setDate]=useState("")
     const [day,setDay]=useState("")
