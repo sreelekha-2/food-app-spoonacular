@@ -11,14 +11,18 @@ class CartDataService{
     }
 
    updateCartData=(id,updateBook)=>{
-    const itemDoc=doc(db,"cartData",id)
-    
-    return updateDoc(itemDoc,updateBook)
+        const itemDoc=doc(db,"cartData",id)
+        return updateDoc(itemDoc,updateBook)
    }
 
    getSingleItem=(id)=>{
-    const itemDoc=doc(db,"cartData",id)
-    return getDoc(itemDoc)
+        const itemDoc=doc(db,"cartData",id)
+        return getDoc(itemDoc)
+   }
+
+   deleteCartItem=(id)=>{
+        const itemDoc=doc(db,"cartData",id)
+        return deleteDoc(itemDoc)
    }
 
     getTotalCartData=()=>{

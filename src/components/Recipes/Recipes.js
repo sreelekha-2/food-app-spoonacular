@@ -64,10 +64,7 @@ export default function Recipes() {
       .then(res=>res.json())
       .then(async data=>{
 
-        const details={title:data.title,image:data.image,itemId:data.id,quantity:1}
-
-        // const cartArr=await totalCartData()
-        // console.log(cartArr)
+        const details={title:data.title,image:data.image,itemId:data.id,quantity:1,price:275}
 
         if(items.some(item=>item.itemId===id)){
             alert("product already added to cart")       
@@ -132,7 +129,7 @@ export default function Recipes() {
                     <Col className="recipe"  xs={12} md={6} lg={4} key={recipe.id}>
                     
                     <div>
-                        <Link className="recipe-link"  to={`/recipe/${recipe.id}`} >
+                        <Link className="recipe-link"  to="" >
                            <div className='recipe-img-container'>
                                 <img className="recipe-img" src={recipe.image} alt="recipe"/>
                             </div>
