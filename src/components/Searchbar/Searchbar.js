@@ -23,23 +23,11 @@ export default function Searchbar() {
 
     const getResults=(e)=>{
      e.preventDefault()
-    //  navigate(`/recipes/${searchText}`)
+  
     
     }
 
-    window.onclick=function(e){
-      
-      if(e.target===formRef.current){
-      
-        setSuggestions([])
-      }
-    }
-
-    const suggestionClick=(title)=>{
-      setSearchText(title)
-      setSuggestions([])
-     
-    }
+    
   
     const getSearchText=(e)=>{
       
@@ -62,17 +50,12 @@ export default function Searchbar() {
   return (
     <div>
        
-        <form className='form-container' onSubmit={getResults} ref={formRef}>
+        <form className='form-container w-100' onSubmit={getResults} ref={formRef}>
             <div className='input-container border-end'>
                 <BiSearch className='search-icon'/>
                 <input placeholder="Search" className='search-bar' type="text" value={searchText} onChange={getSearchText}/>
             </div>
-            {/* {suggestions.length!==0 &&  <ul className='suggestions-container'>
-                  {suggestions.map(suggestion=>(
-                    <li key={suggestion.id} className="suggestion" onClick={()=>suggestionClick(suggestion.title)}>{suggestion.title}</li>
-                  ))}
-            </ul>} */}
-           
+          
 
             <button className='position-relative btn btn-transparent' onClick={onCartClick}>
               <FaShoppingCart />

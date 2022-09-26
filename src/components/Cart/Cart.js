@@ -19,6 +19,7 @@ export default function Cart() {
         const editItemDoc=await CartDataService.getSingleItem(id)
         
         const editItem = editItemDoc.data()
+        console.log(editItem)
         const updateItem={...editItem,quantity:editItem.quantity+1}
         await CartDataService.updateCartData(id,updateItem)
     }
@@ -63,8 +64,8 @@ export default function Cart() {
 
   return (
     <div>
-        <Navbar/>
-        <Container>
+        {/* <Navbar/> */}
+        <Container className='mt-5'>
             <Row>
             <table className="w-100 mt-5">
             <tbody>

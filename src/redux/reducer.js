@@ -28,13 +28,12 @@ const cartSlice=createSlice({
 
             const filteredItems=state.items.filter(item=>item.id!==action.payload);
             state.items=filteredItems
-            console.log(filteredItems)
+          
             
         },
         incrementQuantity:(state,action)=>{
-          
+        
             const item = state.items.find((item) => item.id === action.payload);
-            
             item.quantity+=1;
         },
         decrementQuantity:(state,action)=>{
