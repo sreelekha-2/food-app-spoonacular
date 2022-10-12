@@ -8,6 +8,10 @@ import Cart from './components/Cart/Cart';
 
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Menu from './components/Menu/Menu';
+import Contact from './components/Home/Contact';
+import ContactUs from './components/ContactUs/ContactUs';
+import Shop from './components/Shop/Shop';
 
 
 function App() {
@@ -20,6 +24,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/recipes" element={<Recipes/>}/>
+          <Route path="/menu" element={<Menu/>}/>
+          <Route path="/contact" element={<ContactUs/>}/>
+          <Route path="/shop" element={<Shop/>}/>
           <Route path="/cart" element={<Cart/>}/>
         
         </Routes>

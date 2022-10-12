@@ -74,7 +74,7 @@ useEffect(()=>{
               <Link className='nav-link link' style={{color:getColor("/")}} to="/">Home</Link>
               <Link className='nav-link link' style={{color:getColor("/menu")}} to="/menu">Menu</Link>
               <Link className='nav-link link' style={{color:getColor("/contact")}}  to="/contact">Contact</Link>
-              <Link className='nav-link link' style={{color:getColor("/shop")}} to="/shop">Shop</Link>
+              <Link className='nav-link link' style={{color:getColor("/shop")}} to="shop">Shop</Link>
 
             </div>
             <div>

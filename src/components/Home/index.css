@@ -1,3 +1,10 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+
 /*fonts*/
 .poppins-regular{
     font-family: 'Poppins';
@@ -248,6 +255,10 @@
     padding:20px 0px;
    
   }
+  /* .recipes-wrapper{
+    display: flex;;
+    flex-wrap: wrap;
+  } */
   .popular-items-desc{
  
     font-size: 16px;
@@ -280,24 +291,19 @@
   .recipe-link:hover .recipe-img{
   
     transform:scale(1.05);
-    /* transition: .1s ease-out; */
-    /* transition-timing-function: linear; */
     transition:transform 0.35s ease-in-out;
   }
   .recipe-title{
     color:rgb(0, 0, 0,0.7);
     font-size:16px;
     
-    /* width:380px; */
   }
   .recipe-price{
     color:rgb(0, 0, 0,0.7);
-    font-size:18px;
+    font-size:15px;
   }
   .recipe{
     margin-bottom: 30px;
-    /* margin:20px 10px; */
-    /* height:250px; */
   }
   .recipe-img-container{
     width: 100%;
@@ -306,13 +312,14 @@
   }
   .recipe-description{
     padding: 16px 24px 10px 24px;
-    height:180px;
+    height: calc(100% - 310px);
+    /* height:180px; */
    
   }
   
   .recipe-title-wrap{
    
-    height:60%;
+    height:100%;
   }
   .cart-recipe-img{
     width:200px;
@@ -353,8 +360,21 @@
     background-color: darkgreen;
     color:white;
   }
+
+  /*menu*/
+  .menu-container{
+    margin-top:85px;
+  }
+
+  /*shop*/
+  .shop-wrapper{
+    margin-top: 85px;
+  }
   
 /*contact us*/
+.contact-us-wrapper{
+  margin-top:98px;
+}
 .contact-head{
     font-size: 44px;
     line-height: 160%;

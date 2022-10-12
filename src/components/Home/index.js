@@ -1,13 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import image from "../../assets/food-img.png"
-import playBtn from "../../assets/play-btn.png"
-import star from "../../assets/star.png"
 import foodImg from "../../assets/trending-food.png"
-import blackStar from "../../assets/black-star.png"
 import trendingSmallImg from "../../assets/trending-food-small.png"
-import cart from "../../assets/cart.png"
-import wishList from "../../assets/wish-list.png"
 import Recipes from '../Recipes/Recipes'
 import Contact from './Contact'
 import Footer from './Footer'

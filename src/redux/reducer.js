@@ -54,7 +54,9 @@ const cartSlice=createSlice({
                 state.total=0
             }
            
-        }
+        },
+        
+
     },
 
     extraReducers:{

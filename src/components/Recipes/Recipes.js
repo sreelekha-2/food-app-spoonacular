@@ -73,13 +73,14 @@ export default function Recipes() {
     
   return (
     <>  
-        <Row className="recipes-container">
+        <Row className="recipes-container" id="shop">
             <h2 className='popular-recipes-title inter-font-bold'>Popular Items</h2>
             <p className='popular-items-desc inter-font-regular'>Most Ordered Items</p>
+            
             {popularRecipes.map(recipe=>(
                 <Col className="recipe"  xs={12} sm={6} md={4} lg={3} key={recipe.id}>
                     
-                    <div>
+                    
                         <Link className="recipe-link"  to="" >
                            <div className='recipe-img-container'>
                                 <img className="recipe-img" src={recipe.image} alt="recipe"/>
@@ -88,20 +89,26 @@ export default function Recipes() {
                             <div className="recipe-description">
                                 <div className='recipe-title-wrap'>
                                     <h4 className="recipe-title inter-font-bold">{recipe.title}</h4>
-                                    <p className="recipe-price montserrat-font-semibold">Rs {recipe.pricePerServing.toFixed()} /-</p>
+                                   
                                 </div>
-                                
-                                <button className='btn btn-outline-success add-btn' onClick={()=>addToCart(recipe.id)}>+ ADD</button>
+                                <div>
+                                    <p className="recipe-price montserrat-font-semibold">Rs {recipe.pricePerServing.toFixed()} /-</p>
+                                    <button className='btn btn-outline-success add-btn' onClick={()=>addToCart(recipe.id)}>+ ADD</button>
 
+                                </div>
+
+                               
                             </div>
                             <ToastContainer/>
                         </Link>
-                    </div>
+                    
              
                 </Col>
                
                 
             ))}
+           
+          
         </Row>
 
        
@@ -109,4 +116,6 @@ export default function Recipes() {
        
     </>
   )
+
+
 }
